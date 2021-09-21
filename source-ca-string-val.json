@@ -1,0 +1,21 @@
+{
+  "connector.class": "io.debezium.connector.postgresql.PostgresConnector", 
+  "tasks.max": 1,
+  "plugin.name": "pgoutput",
+  "slot.name": "debezium_ca_string_val",
+  "database.hostname": "172.17.0.1", 
+  "database.port": "5432", 
+  "database.user": "postgres", 
+  "database.password": "postgres", 
+  "database.dbname" : "cross_master", 
+  "database.server.name": "crossdb",
+  "table.include.list": "public.ca_val_string",
+  "column.exclude.list": "public.ca_val_string.optlck",
+  "transforms": "unwrap",
+  "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+  "transforms.unwrap.add.fields": "op",
+  "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "key.converter.schemas.enable": "false",
+  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "value.converter.schemas.enable": "false"
+}

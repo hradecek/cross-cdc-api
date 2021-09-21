@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "nodeTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "NodeType.json"
+      }
+    }
+  }
+}

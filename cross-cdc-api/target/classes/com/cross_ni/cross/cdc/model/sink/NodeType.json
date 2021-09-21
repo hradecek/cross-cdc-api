@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "discriminator": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
