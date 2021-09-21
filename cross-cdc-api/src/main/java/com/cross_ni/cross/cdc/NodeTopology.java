@@ -1,8 +1,8 @@
 package com.cross_ni.cross.cdc;
 
 import com.cross_ni.cross.cdc.model.source.CaDefinition;
-import com.cross_ni.cross.cdc.model.source.CaSet;
-import com.cross_ni.cross.cdc.model.source.CaVal;
+import com.cross_ni.cross.cdc.model.source.CustomAttribute;
+import com.cross_ni.cross.cdc.model.source.CustomAttributes;
 import com.cross_ni.cross.cdc.model.source.Node;
 import com.cross_ni.cross.cdc.model.source.NodeNodeType;
 import com.cross_ni.cross.cdc.model.source.NodeType;
@@ -19,13 +19,8 @@ import org.apache.kafka.streams.kstream.Joined;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Materialized;
-import org.apache.kafka.streams.kstream.Named;
-import org.apache.kafka.streams.kstream.Produced;
-
-import java.util.Arrays;
 
 public class NodeTopology {
-
 
 	// TODO: Externalize
 	private static final String TOPIC_NAME_CDC_NODES = "cross.cdc.node";
@@ -34,18 +29,45 @@ public class NodeTopology {
 	private static final String TOPIC_NAME_NODE_TYPE = "crossdb.public.node_type";
 	private static final String TOPIC_NAME_NODE_NODE_TYPE = "crossdb.public.node_node_type";
 
-	private static final String TOPIC_NAME_CA_VAL_STRING = "crossdb.public.ca_val_string";
-//	private static final String TOPIC_NAME_CA_VAL_INTEGER = "crossdb.public.ca_val_int";
 	private static final String TOPIC_NAME_CA_DEF = "crossdb.public.ca_def";
+	private static final String TOPIC_NAME_CA_VALS = "crossdb.public.ca_vals";
 
 	public static Topology build() {
 		final StreamsBuilder builder = new StreamsBuilder();
-		final GlobalKTable<String, CaDefinition> caDefs = builder.globalTable(TOPIC_NAME_CA_DEF, Consumed.with(Serdes.String(), JsonSerdes.CaDefinition()));
-		final KStream<String, CaVal> caVals = builder.stream(TOPIC_NAME_CA_VAL_STRING, Consumed.with(JsonSerdes.CaVal(), JsonSerdes.CaVal())).selectKey((k, v) -> String.valueOf(v.getCaSetId()));
-		caVals
-				.join(caDefs, (k, v) -> v.getCaDefId(), CaVal::setCaDefinition)
-				.join(withNodeTypes(builder), (left, right) -> right.addCa(left), Joined.with(Serdes.String(), JsonSerdes.CaVal(), JsonSerdes.Node()))
-				.foreach((k, v) -> System.out.println(k + " " + v));
+
+		final GlobalKTable<String, CaDefinition> caDefs =
+				builder.globalTable(TOPIC_NAME_CA_DEF, Consumed.with(Serdes.String(), JsonSerdes.CaDefinition()));
+		final KTable<String, CustomAttributes> customAttributes =
+				builder.stream(TOPIC_NAME_CA_VALS, Consumed.with(Serdes.String(), JsonSerdes.CaVal()))
+						.join(caDefs, (k, v) -> v.getCaDefId(), CustomAttribute::setCaDefinition)
+						.groupByKey()
+						.aggregate(
+								CustomAttributes::new,
+								(key, value, aggregate) -> {
+									System.out.println("Custom attributes aggregation: " + key);
+									return aggregate.addCustomAttribute(value);
+								},
+								Materialized.with(Serdes.String(), JsonSerdes.CustomAttributes()));
+		customAttributes.toStream().foreach((k, v) -> System.out.println(k));
+
+		final KTable<String, Node> nodes =
+				withNodeTypes(builder)
+						.toStream()
+						.selectKey((k, v) -> String.valueOf(v.getCaSetId()))
+						.toTable(Materialized.with(Serdes.String(), JsonSerdes.Node()));
+
+		final KTable<String, Node> nodesWithCa =
+				nodes.outerJoin(
+						customAttributes,
+						(left, right) -> {
+							if (left != null && right != null) {
+								return left.setCa(right);
+							} else {
+								return null;
+							}
+						},
+						Materialized.with(Serdes.String(), JsonSerdes.Node()));
+		nodesWithCa.toStream().foreach((k, v) -> System.out.println(k + " " + v));
 
 		return builder.build();
 	}
@@ -69,7 +91,10 @@ public class NodeTopology {
 				.groupByKey(Grouped.with(Serdes.String(), JsonSerdes.NodeType()))
 				.aggregate(
 						NodeTypes::new,
-						(key, value, aggregate) -> aggregate.addNodeType(value),
+						(key, value, aggregate) -> {
+							System.out.println("Node type aggregation: " + key);
+							return aggregate.addNodeType(value);
+						},
 						Materialized.with(Serdes.String(), JsonSerdes.NodeTypes()));
 
 	}

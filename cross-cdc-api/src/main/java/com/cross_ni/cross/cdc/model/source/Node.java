@@ -10,7 +10,7 @@ public class Node {
 	private String nodeName;
 	private String description;
 	private Set<NodeType> nodeTypes = new HashSet<>();
-	private Set<CaVal> customAttributes = new HashSet<>();
+	private Set<CustomAttribute> customAttributes = new HashSet<>();
 
 	public long getNodeId() {
 		return nodeId;
@@ -36,8 +36,13 @@ public class Node {
 		this.nodeName = nodeName;
 	}
 
-	public Node addCa(CaVal caValue) {
+	public Node addCa(CustomAttribute caValue) {
 		this.customAttributes.add(caValue);
+		return this;
+	}
+
+	public Node setCa(CustomAttributes caValue) {
+		this.customAttributes.addAll(caValue.getCustomAttributes());
 		return this;
 	}
 

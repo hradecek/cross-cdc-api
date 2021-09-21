@@ -3,6 +3,7 @@ package com.cross_ni.cross.cdc;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
+import org.apache.kafka.streams.errors.StreamsUncaughtExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +20,10 @@ public class Application {
 		props.put(StreamsConfig.STATE_DIR_CONFIG, "/tmp/kafka-streams");
 
 		final KafkaStreams streams = new KafkaStreams(topology, props);
+		streams.setUncaughtExceptionHandler(throwable -> {
+			throwable.printStackTrace();
+			return null;
+		});
 		Runtime.getRuntime()
 				.addShutdownHook(
 						new Thread(() -> {

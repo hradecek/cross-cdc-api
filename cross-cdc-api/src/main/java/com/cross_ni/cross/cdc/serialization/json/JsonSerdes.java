@@ -2,7 +2,8 @@ package com.cross_ni.cross.cdc.serialization.json;
 
 import com.cross_ni.cross.cdc.model.source.CaDefinition;
 import com.cross_ni.cross.cdc.model.source.CaSet;
-import com.cross_ni.cross.cdc.model.source.CaVal;
+import com.cross_ni.cross.cdc.model.source.CustomAttribute;
+import com.cross_ni.cross.cdc.model.source.CustomAttributes;
 import com.cross_ni.cross.cdc.model.source.Node;
 import com.cross_ni.cross.cdc.model.source.NodeNodeType;
 import com.cross_ni.cross.cdc.model.source.NodeType;
@@ -12,6 +13,10 @@ import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 
 public class JsonSerdes {
+
+  public static Serde<CustomAttributes> CustomAttributes() {
+    return createSerde(CustomAttributes.class);
+  }
 
   public static Serde<CaDefinition> CaDefinition() {
     return createSerde(CaDefinition.class);
@@ -25,8 +30,8 @@ public class JsonSerdes {
     return createSerde(CaSet.class);
   }
 
-  public static Serde<CaVal> CaVal() {
-    return createSerde(CaVal.class);
+  public static Serde<CustomAttribute> CaVal() {
+    return createSerde(CustomAttribute.class);
   }
 
   public static Serde<NodeType> NodeType() {

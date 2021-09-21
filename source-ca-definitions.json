@@ -7,7 +7,7 @@
   "database.port": "5432", 
   "database.user": "postgres", 
   "database.password": "postgres", 
-  "database.dbname" : "cross_master", 
+  "database.dbname" : "test_project_master", 
   "database.server.name": "crossdb",
   "table.include.list": "public.ca_def",
   "column.exclude.list": "public.ca_def.optlck",

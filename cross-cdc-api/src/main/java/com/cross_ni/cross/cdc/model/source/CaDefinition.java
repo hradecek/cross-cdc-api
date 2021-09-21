@@ -1,9 +1,11 @@
 package com.cross_ni.cross.cdc.model.source;
 
+import com.google.gson.annotations.SerializedName;
+
 public class CaDefinition {
 
 	private final String attributeName;
-	@SerializedName(value = "emailId")
+	@SerializedName(value = "class")
 	private final String attributeClass;
 
 	public CaDefinition(String attributeName, String attributeClass) {
