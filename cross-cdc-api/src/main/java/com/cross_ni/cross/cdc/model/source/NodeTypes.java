@@ -1,43 +1,22 @@
 package com.cross_ni.cross.cdc.model.source;
 
+import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
+
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
+@Getter
+@ToString
+@GeneratedSerde
 public class NodeTypes {
 
-	private final Set<NodeType> nodeTypes;
+    private final Set<NodeType> nodeTypes = new HashSet<>();
 
-	public NodeTypes() {
-		nodeTypes = new HashSet<>();
-	}
-
-	public NodeTypes addNodeType(NodeType nodeType) {
-		nodeTypes.add(nodeType);
-		return this;
-	}
-
-	public Set<NodeType> getNodeTypes() {
-		return nodeTypes;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		NodeTypes nodeTypes1 = (NodeTypes) o;
-		return Objects.equals(nodeTypes, nodeTypes1.nodeTypes);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(nodeTypes);
-	}
-
-	@Override
-	public String toString() {
-		return "NodeTypes{" +
-				"nodeTypes=" + nodeTypes +
-				'}';
-	}
+    public NodeTypes aggregate(final NodeType nodeType) {
+        nodeTypes.add(nodeType);
+        return this;
+    }
 }

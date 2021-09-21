@@ -4,6 +4,9 @@
     "name": {
       "type": "string"
     },
+    "customAttributes": {
+      "type": "object"
+    },
     "nodeTypes": {
       "type": "array",
       "items": {

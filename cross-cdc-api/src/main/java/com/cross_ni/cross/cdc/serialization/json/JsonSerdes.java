@@ -1,54 +1,43 @@
 package com.cross_ni.cross.cdc.serialization.json;
 
-import com.cross_ni.cross.cdc.model.source.CaDefinition;
-import com.cross_ni.cross.cdc.model.source.CaSet;
-import com.cross_ni.cross.cdc.model.source.CustomAttribute;
-import com.cross_ni.cross.cdc.model.source.CustomAttributes;
-import com.cross_ni.cross.cdc.model.source.Node;
-import com.cross_ni.cross.cdc.model.source.NodeNodeType;
-import com.cross_ni.cross.cdc.model.source.NodeType;
-import com.cross_ni.cross.cdc.model.source.NodeTypes;
+import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
 
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
+import org.reflections.Reflections;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class JsonSerdes {
 
-  public static Serde<CustomAttributes> CustomAttributes() {
-    return createSerde(CustomAttributes.class);
-  }
+    private static final String JAVA_PACKAGE_SOURCE_MODEL = "com.cross_ni.cross.cdc.model.source";
+    private static final Map<Class<?>, Serde<?>> SERDES = new HashMap<>();
 
-  public static Serde<CaDefinition> CaDefinition() {
-    return createSerde(CaDefinition.class);
-  }
+    static {
+        for (Class<?> modelClass : findAllModelsWithGeneratedSerde()) {
+            SERDES.put(modelClass, createSerde(modelClass));
+        }
+    }
 
-  public static Serde<Node> Node() {
-    return createSerde(Node.class);
-  }
+    private JsonSerdes() {
+        throw new AssertionError("Cannot instantiate utility class");
+    }
 
-  public static Serde<CaSet> CaSet() {
-    return createSerde(CaSet.class);
-  }
+    @SuppressWarnings("unchecked")
+    public static <T> Serde<T> serde(Class<T> modelClass) {
+        return (Serde<T>) SERDES.get(modelClass);
+    }
 
-  public static Serde<CustomAttribute> CaVal() {
-    return createSerde(CustomAttribute.class);
-  }
+    private static Set<Class<?>> findAllModelsWithGeneratedSerde() {
+        final Reflections reflections = new Reflections(JAVA_PACKAGE_SOURCE_MODEL);
+        return reflections.getTypesAnnotatedWith(GeneratedSerde.class);
+    }
 
-  public static Serde<NodeType> NodeType() {
-    return createSerde(NodeType.class);
-  }
-
-  public static Serde<NodeTypes> NodeTypes() {
-    return createSerde(NodeTypes.class);
-  }
-
-  public static Serde<NodeNodeType> NodeNodeType() {
-    return createSerde(NodeNodeType.class);
-  }
-
-  private static <T> Serde<T> createSerde(Class<T> clazz) {
-    JsonSerializer<T> serializer = new JsonSerializer<>();
-    JsonDeserializer<T> deserializer = new JsonDeserializer<>(clazz);
-    return Serdes.serdeFrom(serializer, deserializer);
-  }
+    private static <T> Serde<T> createSerde(Class<T> clazz) {
+        final JsonSerializer<T> serializer = new JsonSerializer<>();
+        final JsonDeserializer<T> deserializer = new JsonDeserializer<>(clazz);
+        return Serdes.serdeFrom(serializer, deserializer);
+    }
 }

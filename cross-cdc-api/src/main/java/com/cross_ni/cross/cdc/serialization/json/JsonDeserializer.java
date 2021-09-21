@@ -10,35 +10,44 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 class JsonDeserializer<T> implements Deserializer<T> {
-  private Gson gson =
-          new GsonBuilder()
-                  .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                  .create();
 
-  private Class<T> destinationClass;
-  private Type reflectionTypeToken;
+    private final Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
 
-  /** Default constructor needed by Kafka */
-  public JsonDeserializer(Class<T> destinationClass) {
-    this.destinationClass = destinationClass;
-  }
+    private Class<T> destinationClass;
+    private Type reflectionTypeToken;
 
-  public JsonDeserializer(Type reflectionTypeToken) {
-    this.reflectionTypeToken = reflectionTypeToken;
-  }
-
-  @Override
-  public void configure(Map<String, ?> props, boolean isKey) {}
-
-  @Override
-  public T deserialize(String topic, byte[] bytes) {
-    if (bytes == null) {
-      return null;
+    /**
+     * Default constructor needed by Kafka.
+     *
+     * @param destinationClass class which data will be deserialized to
+     */
+    public JsonDeserializer(Class<T> destinationClass) {
+        this.destinationClass = destinationClass;
     }
-    Type type = destinationClass != null ? destinationClass : reflectionTypeToken;
-    return gson.fromJson(new String(bytes, StandardCharsets.UTF_8), type);
-  }
 
-  @Override
-  public void close() {}
+    /**
+     * Constructor.
+     *
+     * @param reflectionTypeToken type of deserialized class
+     */
+    public JsonDeserializer(Type reflectionTypeToken) {
+        this.reflectionTypeToken = reflectionTypeToken;
+    }
+
+    @Override
+    public void configure(Map<String, ?> props, boolean isKey) {}
+
+    @Override
+    public T deserialize(String topic, byte[] bytes) {
+        if (bytes == null) {
+            return null;
+        }
+
+        final Type type = destinationClass != null ? destinationClass : reflectionTypeToken;
+
+        return gson.fromJson(new String(bytes, StandardCharsets.UTF_8), type);
+    }
+
+    @Override
+    public void close() { }
 }

@@ -9,22 +9,22 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 class JsonSerializer<T> implements Serializer<T> {
-  private Gson gson =
-      new GsonBuilder()
-          .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-          .create();
 
-  /** Default constructor needed by Kafka */
-  public JsonSerializer() {}
+    private final Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
 
-  @Override
-  public void configure(Map<String, ?> props, boolean isKey) {}
+    /**
+     * Default constructor needed by Kafka
+     */
+    public JsonSerializer() { }
 
-  @Override
-  public byte[] serialize(String topic, T type) {
-    return gson.toJson(type).getBytes(StandardCharsets.UTF_8);
-  }
+    @Override
+    public void configure(Map<String, ?> props, boolean isKey) { }
 
-  @Override
-  public void close() {}
+    @Override
+    public byte[] serialize(String topic, T type) {
+        return gson.toJson(type).getBytes(StandardCharsets.UTF_8);
+    }
+
+    @Override
+    public void close() { }
 }

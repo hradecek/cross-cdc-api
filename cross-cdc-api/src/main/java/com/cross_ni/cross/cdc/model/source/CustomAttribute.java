@@ -1,49 +1,53 @@
 package com.cross_ni.cross.cdc.model.source;
 
-import com.google.gson.annotations.SerializedName;
+import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
 
+import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+
+@Getter
+@ToString
+@RequiredArgsConstructor
+@GeneratedSerde
 public class CustomAttribute {
 
-	private final String caDefId;
-	private final long caSetId;
-	private CaDefinition caDefinition;
+    private final String caDefId;
+    private final long caSetId;
+    // TODO: Can the "value names" be inferred from cross_db entities somehow?
+    @SerializedName(
+        value = "value",
+        alternate = {
+            "address_id",
+            "bool_value",
+            "country_id",
+            "date_value",
+            "double_value",
+            "enum_value",
+            "int_value",
+            "ip_pool_id",
+            "long_value",
+            "material_id",
+            "node_id",
+            "large_string",
+            "radio_band_id",
+            "radio_band_width_id",
+            "radio_channel_id",
+            "radio_kmb_id",
+            "short_value",
+            "string_value",
+            "timestamp_value",
+            "time_value",
+            "url_value",
+        }
+    )
+    private final Object value;
 
-	@SerializedName(value = "value", alternate = {"string_value", "int_value"})
-	private Object value;
+    private CaDefinition caDefinition;
 
-	public CustomAttribute(String caDefId, long caSetId) {
-		this.caDefId = caDefId;
-		this.caSetId = caSetId;
-	}
-
-	public String getCaDefId() {
-		return caDefId;
-	}
-
-	public long getCaSetId() {
-		return caSetId;
-	}
-
-	public CaDefinition getCaDefinition() {
-		return caDefinition;
-	}
-
-	public CustomAttribute setCaDefinition(CaDefinition caDefinition) {
-		this.caDefinition = caDefinition;
-		return this;
-	}
-
-	public Object getValue() {
-		return value;
-	}
-
-	@Override
-	public String toString() {
-		return "CaVal{" +
-				"caDefId='" + caDefId + '\'' +
-				", caSetId=" + caSetId +
-				", caDefinition=" + caDefinition +
-				", value=" + value +
-				'}';
-	}
+    public CustomAttribute aggregate(CaDefinition caDefinition) {
+        this.caDefinition = caDefinition;
+        return this;
+    }
 }

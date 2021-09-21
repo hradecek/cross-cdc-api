@@ -1,31 +1,17 @@
 package com.cross_ni.cross.cdc.model.source;
 
+import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+
+@Getter
+@ToString
+@RequiredArgsConstructor
+@GeneratedSerde
 public class NodeNodeType {
 
-	private long nodeId;
-	private String discriminator;
-
-	public long getNodeId() {
-		return nodeId;
-	}
-
-	public void setNodeId(long nodeId) {
-		this.nodeId = nodeId;
-	}
-
-	public String getDiscriminator() {
-		return discriminator;
-	}
-
-	public void setDiscriminator(String discriminator) {
-		this.discriminator = discriminator;
-	}
-
-	@Override
-	public String toString() {
-		return "NodeNodeType{" +
-				"nodeId=" + nodeId +
-				", discriminator='" + discriminator + '\'' +
-				'}';
-	}
+    private final long nodeId;
+    private final String discriminator;
 }
