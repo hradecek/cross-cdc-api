@@ -61,6 +61,7 @@ public class Bootstrap {
         properties.put(StreamsConfig.APPLICATION_ID_CONFIG, APPLICATION_ID);
         properties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVER);
         properties.put(StreamsConfig.STATE_DIR_CONFIG, STATE_DIR_CONFIG);
+        properties.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 0);
 
         return properties;
     }

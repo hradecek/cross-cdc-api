@@ -1,11 +1,15 @@
 {
   "type": "object",
+  "additionalProperties": false,
   "properties": {
     "name": {
       "type": "string"
     },
     "customAttributes": {
-      "type": "object"
+      "type": "array",
+      "items": {
+        "$ref": "CustomAttribute.json"
+      }
     },
     "nodeTypes": {
       "type": "array",

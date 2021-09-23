@@ -8,6 +8,30 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.avro</groupId>
+        <artifactId>avro-maven-plugin</artifactId>
+        <version>${version.avro}</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>schema</goal>
+            </goals>
+            <configuration>
+              <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+              <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <version>${version.maven.shade.plugin}</version>
         <executions>
@@ -56,7 +80,6 @@
           </execution>
         </executions>
         <configuration>
-          <sourceType>json</sourceType>
           <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/sink</sourceDirectory>
           <targetPackage>com.cross_ni.cross.cdc.model.sink</targetPackage>
         </configuration>
@@ -72,14 +95,15 @@
     </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.target>${version.java}</maven.compiler.target>
-    <main.class>com.cross_ni.cross.cdc.Bootstrap</main.class>
-    <version.reflections>0.9.11</version.reflections>
-    <version.maven.shade.plugin>3.2.4</version.maven.shade.plugin>
-    <version.java>11</version.java>
-    <maven.compiler.source>${version.java}</maven.compiler.source>
-    <version.kafka.streams>2.8.0</version.kafka.streams>
     <version.slf4j.simple>1.7.32</version.slf4j.simple>
+    <version.kafka.streams>2.8.0</version.kafka.streams>
     <version.gson>2.8.8</version.gson>
+    <version.avro>1.10.2</version.avro>
+    <maven.compiler.target>${version.java}</maven.compiler.target>
+    <version.maven.shade.plugin>3.2.4</version.maven.shade.plugin>
+    <version.java>8</version.java>
+    <version.reflections>0.9.12</version.reflections>
+    <main.class>com.cross_ni.cross.cdc.Bootstrap</main.class>
+    <maven.compiler.source>${version.java}</maven.compiler.source>
   </properties>
 </project>

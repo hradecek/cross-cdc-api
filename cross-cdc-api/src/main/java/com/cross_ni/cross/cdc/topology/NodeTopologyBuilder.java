@@ -7,6 +7,7 @@ import com.cross_ni.cross.cdc.model.source.Node;
 import com.cross_ni.cross.cdc.model.source.NodeNodeType;
 import com.cross_ni.cross.cdc.model.source.NodeType;
 import com.cross_ni.cross.cdc.model.source.NodeTypes;
+import com.cross_ni.cross.cdc.serialization.NodeSinkValueMapper;
 import com.cross_ni.cross.cdc.serialization.json.JsonSerdes;
 
 import org.apache.kafka.common.serialization.Serdes;
@@ -17,6 +18,7 @@ import org.apache.kafka.streams.kstream.GlobalKTable;
 import org.apache.kafka.streams.kstream.Grouped;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Materialized;
+import org.apache.kafka.streams.kstream.Produced;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,14 +36,18 @@ class NodeTopologyBuilder {
     private static final String TOPIC_NAME_CA_VALS = "crossdb.public.ca_vals";
 
     private final StreamsBuilder builder = new StreamsBuilder();
+    private final NodeSinkValueMapper nodeSinkValueMapper = new NodeSinkValueMapper();
 
     public Topology build() {
-        final var customAttributeDefinitions = customAttributeDefinitions();
-        final var customAttributes = customAttributes(customAttributeDefinitions);
+        final GlobalKTable<String, CaDefinition> customAttributeDefinitions = customAttributeDefinitions();
+        final KTable<String, CustomAttributes> customAttributes = customAttributes(customAttributeDefinitions);
 
-        final var nodeTypes = nodeTypes();
-        final var nodeNodeTypes = nodeNodeTypes(nodeTypes);
-        final var nodes = nodes(nodeNodeTypes, customAttributes);
+        final GlobalKTable<String, NodeType> nodeTypes = nodeTypes();
+        final KTable<String, NodeTypes> nodeNodeTypes = nodeNodeTypes(nodeTypes);
+
+        final KTable<String, Node> nodes = nodes(nodeNodeTypes, customAttributes);
+
+        nodes.mapValues(nodeSinkValueMapper).toStream().to(TOPIC_NAME_CDC_NODES, Produced.with(Serdes.String(), JsonSerdes.SinkNode()));
 
         return builder.build();
     }
@@ -75,7 +81,10 @@ class NodeTopologyBuilder {
         return builder
             .stream(TOPIC_NAME_NODE_NODE_TYPE, Consumed.with(JsonSerdes.serde(NodeNodeType.class), JsonSerdes.serde(NodeNodeType.class)))
             .selectKey((key, value) -> String.valueOf(key.getNodeId()))
-            .join(nodeTypes, (key, value) -> value.getDiscriminator(), (left, right) -> right)
+            .join(nodeTypes, (key, value) -> value.getDiscriminator(), (left, right) -> {
+                right.setOperation(left.getOperation());
+                return right;
+            })
             .groupByKey(Grouped.with(Serdes.String(), JsonSerdes.serde(NodeType.class)))
             .aggregate(
                 NodeTypes::new,
@@ -84,12 +93,12 @@ class NodeTopologyBuilder {
     }
 
     private static NodeTypes nodeTypesAggregator(String key, NodeType value, NodeTypes aggregate) {
-        LOGGER.debug("Node type aggregation: {}", key);
+        LOGGER.debug("Node types aggregation: {}", key);
         return aggregate.aggregate(value);
     }
 
     private KTable<String, Node> nodes(KTable<String, NodeTypes> nodeTypes, KTable<String, CustomAttributes> customAttributes) {
-        final var nodes = builder.table(TOPIC_NAME_NODE, Consumed.with(Serdes.String(), JsonSerdes.serde(Node.class)));
+        final KTable<String, Node> nodes = builder.table(TOPIC_NAME_NODE, Consumed.with(Serdes.String(), JsonSerdes.serde(Node.class)));
         return joinCustomAttributes(joinNodeTypes(nodes, nodeTypes), customAttributes);
     }
 

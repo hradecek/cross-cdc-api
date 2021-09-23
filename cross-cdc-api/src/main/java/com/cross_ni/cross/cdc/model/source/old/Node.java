@@ -1,9 +1,8 @@
-package com.cross_ni.cross.cdc.model.source;
+package com.cross_ni.cross.cdc.model.source.old;
 
 import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import java.util.HashSet;
@@ -11,16 +10,16 @@ import java.util.Set;
 
 @Getter
 @ToString
-@RequiredArgsConstructor
 @GeneratedSerde
-public class Node {
+public class Node extends CdcModel {
 
-    private final long nodeId;
-    private final long caSetId;
-    private final String nodeName;
-    private final String description;
-    private final Set<NodeType> nodeTypes = new HashSet<>();
-    private final Set<CustomAttribute> customAttributes = new HashSet<>();
+    private long nodeId;
+    private long caSetId;
+    private String nodeName;
+    private String description;
+
+    private Set<NodeType> nodeTypes = new HashSet<>();
+    private Set<CustomAttribute> customAttributes = new HashSet<>();
 
     public Node aggregate(final CustomAttributes customAttributes) {
         this.customAttributes.addAll(customAttributes.getCustomAttributes());

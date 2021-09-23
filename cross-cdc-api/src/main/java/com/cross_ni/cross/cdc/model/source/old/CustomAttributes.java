@@ -1,7 +1,6 @@
-package com.cross_ni.cross.cdc.model.source;
+package com.cross_ni.cross.cdc.model.source.old;
 
 import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
-
 import lombok.Getter;
 import lombok.ToString;
 
@@ -13,7 +12,7 @@ import java.util.Set;
 @GeneratedSerde
 public class CustomAttributes {
 
-    private final Set<CustomAttribute> customAttributes = new HashSet<>();
+    private Set<CustomAttribute> customAttributes = new HashSet<>();
 
     public CustomAttributes aggregate(CustomAttribute customAttribute) {
         customAttributes.add(customAttribute);

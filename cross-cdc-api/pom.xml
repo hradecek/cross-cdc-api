@@ -14,24 +14,19 @@
 
   <properties>
     <!-- General project settings -->
-    <version.java>11</version.java>
+    <version.java>8</version.java>
     <maven.compiler.source>${version.java}</maven.compiler.source>
     <maven.compiler.target>${version.java}</maven.compiler.target>
-    <!-- Maven plugins settings-->
-    <!-- Shade plugin -->
-    <version.maven.shade.plugin>3.2.4</version.maven.shade.plugin>
     <main.class>com.cross_ni.cross.cdc.Bootstrap</main.class>
+    <!-- Maven plugins versions -->
+    <version.maven.shade.plugin>3.2.4</version.maven.shade.plugin>
     <!-- Libraries versions -->
-    <!-- Kafka streams -->
     <version.kafka.streams>2.8.0</version.kafka.streams>
-    <!-- GSON -->
     <version.gson>2.8.8</version.gson>
-    <!-- SLF4J -->
     <version.slf4j.simple>1.7.32</version.slf4j.simple>
-    <!-- Guava -->
 <!--    <version.guava>30.1.1-jre</version.guava>-->
-    <!-- Reflections -->
-    <version.reflections>0.9.11</version.reflections>
+    <version.reflections>0.9.12</version.reflections>
+    <version.avro>1.10.2</version.avro>
   </properties>
 
   <dependencies>
@@ -53,12 +48,13 @@
       <artifactId>slf4j-simple</artifactId>
       <version>${version.slf4j.simple}</version>
     </dependency>
+    <!-- De/Serialization -->
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
+      <version>1.10.2</version>
+    </dependency>
     <!-- Utility libraries -->
-<!--    <dependency>-->
-<!--      <groupId>com.google.guava</groupId>-->
-<!--      <artifactId>guava</artifactId>-->
-<!--      <version>${version.guava}</version>-->
-<!--    </dependency>-->
     <dependency>
       <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
@@ -75,6 +71,14 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -108,6 +112,8 @@
             <configuration>
               <sources>
                 <source>target/jsonschema2pojo</source>
+                <!-- TODO: to property -->
+                <source>src-gen/main/java</source>
               </sources>
             </configuration>
           </execution>
@@ -118,7 +124,6 @@
         <artifactId>jsonschema2pojo-maven-plugin</artifactId>
         <version>1.1.1</version>
         <configuration>
-          <sourceType>json</sourceType>
           <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/sink</sourceDirectory>
           <targetPackage>com.cross_ni.cross.cdc.model.sink</targetPackage>
         </configuration>
@@ -132,4 +137,47 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>avro</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>${basedir}/src-gen</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-maven-plugin</artifactId>
+            <version>${version.avro}</version>
+            <executions>
+              <execution>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>schema</goal>
+                </goals>
+                <configuration>
+                  <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+                  <!-- TODO: to property -->
+                  <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
+                  <imports>
+                    <import>${project.basedir}/src/main/avro/node_type.avsc</import>
+                  </imports>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

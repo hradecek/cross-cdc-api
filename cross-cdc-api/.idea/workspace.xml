@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaSet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CustomAttribute.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CustomAttributes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/NodeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/NodeTypes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttribute.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttributeDefinition.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttributeDefinition.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/NodeType.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/NodeType.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definitions.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-ca-definitions.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-types.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-nodes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-nodes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/check-status" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/register-connectors.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/register-connectors.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/reset-application.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/reset-application.sh" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1yXTzqcBI15nbezfphheAhfqYzr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/avro" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/avro" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="" />
+      <created>1632397203649</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632397203649</updated>
+      <workItem from="1632397208622" duration="4514000" />
+      <workItem from="1632410018423" duration="112000" />
+      <workItem from="1632410178022" duration="155000" />
+      <workItem from="1632410349591" duration="1397000" />
+      <workItem from="1632413295287" duration="162000" />
+      <workItem from="1632413477935" duration="52000" />
+      <workItem from="1632415035945" duration="49000" />
+      <workItem from="1632423477850" duration="673000" />
+      <workItem from="1632424363225" duration="87000" />
+      <workItem from="1632424560532" duration="4130000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

@@ -1,7 +1,11 @@
 {
   "type": "object",
+  "additionalProperties": false,
   "properties": {
     "attributeClass": {
+      "type": "string"
+    },
+    "attributeName": {
       "type": "string"
     }
   }

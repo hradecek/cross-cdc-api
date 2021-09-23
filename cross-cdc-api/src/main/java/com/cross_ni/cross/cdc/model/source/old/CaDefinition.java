@@ -1,21 +1,19 @@
-package com.cross_ni.cross.cdc.model.source;
+package com.cross_ni.cross.cdc.model.source.old;
 
 import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @Getter
 @ToString
-@RequiredArgsConstructor
 @GeneratedSerde
-public class CaDefinition {
+public class CaDefinition extends CdcModel {
 
-    private final String attributeName;
+    private String attributeName;
 
     // DB column is mapped to "class", which is JAVA keyword and must be remapped via annotation
     @SerializedName(value = "class")
-    private final String attributeClass;
+    private String attributeClass;
 }

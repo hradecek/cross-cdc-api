@@ -14,6 +14,7 @@
   "transforms": "reroute,unwrap,extractPK",
   "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
   "transforms.unwrap.add.fields": "op",
+  "transforms.unwrap.delete.handling.mode": "rewrite",
   "transforms.extractPK.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
   "transforms.extractPK.field": "ca_set_id",
   "transforms.reroute.type": "io.debezium.transforms.ByLogicalTableRouter",

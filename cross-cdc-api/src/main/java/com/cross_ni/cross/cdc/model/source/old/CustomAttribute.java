@@ -1,4 +1,4 @@
-package com.cross_ni.cross.cdc.model.source;
+package com.cross_ni.cross.cdc.model.source.old;
 
 import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
 
@@ -7,14 +7,16 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+import java.util.Objects;
+
 @Getter
 @ToString
 @RequiredArgsConstructor
 @GeneratedSerde
-public class CustomAttribute {
+public class CustomAttribute extends CdcModel {
 
-    private final String caDefId;
-    private final long caSetId;
+    private String caDefId;
+    private long caSetId;
     // TODO: Can the "value names" be inferred from cross_db entities somehow?
     @SerializedName(
         value = "value",
@@ -42,12 +44,25 @@ public class CustomAttribute {
             "url_value",
         }
     )
-    private final Object value;
+    private Object value;
 
     private CaDefinition caDefinition;
 
     public CustomAttribute aggregate(CaDefinition caDefinition) {
         this.caDefinition = caDefinition;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomAttribute that = (CustomAttribute) o;
+        return caSetId == that.caSetId && Objects.equals(caDefId, that.caDefId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(caDefId, caSetId);
     }
 }

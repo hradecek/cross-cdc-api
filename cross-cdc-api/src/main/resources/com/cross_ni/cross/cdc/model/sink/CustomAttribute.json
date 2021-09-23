@@ -1,8 +1,12 @@
 {
   "type": "object",
+  "additionalProperties": false,
   "properties": {
     "value": {
-      "type": "object"
+      "anyOf": [
+        { "type": "string" },
+        { "type": "integer" }
+      ]
     },
     "definition": {
       "$ref": "CustomAttributeDefinition.json"
