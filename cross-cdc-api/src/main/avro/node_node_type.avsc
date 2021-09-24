@@ -1,0 +1,16 @@
+{
+    "namespace": "com.cross_ni.cross.cdc.model.source",
+    "type": "record",
+    "name": "NodeNodeType",
+    "doc": "TODO: Represents CROSS NodeNodeType",
+    "fields": [
+        {
+            "name": "node_id",
+            "type": "long"
+        },
+        {
+            "name": "discriminator",
+            "type": "string"
+        }
+    ]
+}

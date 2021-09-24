@@ -15,8 +15,8 @@ import org.apache.avro.message.SchemaStore;
 /** TODO: Represents CROSS Node */
 @org.apache.avro.specific.AvroGenerated
 public class Node extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8747432728684468447L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Node\",\"namespace\":\"com.cross_ni.cross.cdc.model.source\",\"doc\":\"TODO: Represents CROSS Node\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"nodeTypes\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"NodeType\",\"doc\":\"TODO: Represents CROSS NodeType\",\"fields\":[{\"name\":\"discriminator\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"}]}}}]}");
+  private static final long serialVersionUID = -1287134262083285161L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Node\",\"namespace\":\"com.cross_ni.cross.cdc.model.source\",\"doc\":\"TODO: Represents CROSS Node\",\"fields\":[{\"name\":\"__op\",\"type\":{\"type\":\"enum\",\"name\":\"Operation\",\"doc\":\"TODO\",\"symbols\":[\"c\",\"r\",\"u\",\"d\"]}},{\"name\":\"node_id\",\"type\":\"long\"},{\"name\":\"ca_set_id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"description\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -72,8 +72,11 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
     return DECODER.decode(b);
   }
 
-   private java.lang.CharSequence name;
-   private java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> nodeTypes;
+   private com.cross_ni.cross.cdc.model.source.Operation __op;
+   private long node_id;
+   private long ca_set_id;
+   private java.lang.String name;
+   private java.lang.String description;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -84,12 +87,18 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
 
   /**
    * All-args constructor.
+   * @param __op The new value for __op
+   * @param node_id The new value for node_id
+   * @param ca_set_id The new value for ca_set_id
    * @param name The new value for name
-   * @param nodeTypes The new value for nodeTypes
+   * @param description The new value for description
    */
-  public Node(java.lang.CharSequence name, java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> nodeTypes) {
+  public Node(com.cross_ni.cross.cdc.model.source.Operation __op, java.lang.Long node_id, java.lang.Long ca_set_id, java.lang.String name, java.lang.String description) {
+    this.__op = __op;
+    this.node_id = node_id;
+    this.ca_set_id = ca_set_id;
     this.name = name;
-    this.nodeTypes = nodeTypes;
+    this.description = description;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -97,8 +106,11 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return name;
-    case 1: return nodeTypes;
+    case 0: return __op;
+    case 1: return node_id;
+    case 2: return ca_set_id;
+    case 3: return name;
+    case 4: return description;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -107,17 +119,71 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: name = (java.lang.CharSequence)value$; break;
-    case 1: nodeTypes = (java.util.List<com.cross_ni.cross.cdc.model.source.NodeType>)value$; break;
+    case 0: __op = (com.cross_ni.cross.cdc.model.source.Operation)value$; break;
+    case 1: node_id = (java.lang.Long)value$; break;
+    case 2: ca_set_id = (java.lang.Long)value$; break;
+    case 3: name = value$ != null ? value$.toString() : null; break;
+    case 4: description = value$ != null ? value$.toString() : null; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
+  }
+
+  /**
+   * Gets the value of the '__op' field.
+   * @return The value of the '__op' field.
+   */
+  public com.cross_ni.cross.cdc.model.source.Operation getOp$1() {
+    return __op;
+  }
+
+
+  /**
+   * Sets the value of the '__op' field.
+   * @param value the value to set.
+   */
+  public void setOp$1(com.cross_ni.cross.cdc.model.source.Operation value) {
+    this.__op = value;
+  }
+
+  /**
+   * Gets the value of the 'node_id' field.
+   * @return The value of the 'node_id' field.
+   */
+  public long getNodeId() {
+    return node_id;
+  }
+
+
+  /**
+   * Sets the value of the 'node_id' field.
+   * @param value the value to set.
+   */
+  public void setNodeId(long value) {
+    this.node_id = value;
+  }
+
+  /**
+   * Gets the value of the 'ca_set_id' field.
+   * @return The value of the 'ca_set_id' field.
+   */
+  public long getCaSetId() {
+    return ca_set_id;
+  }
+
+
+  /**
+   * Sets the value of the 'ca_set_id' field.
+   * @param value the value to set.
+   */
+  public void setCaSetId(long value) {
+    this.ca_set_id = value;
   }
 
   /**
    * Gets the value of the 'name' field.
    * @return The value of the 'name' field.
    */
-  public java.lang.CharSequence getName() {
+  public java.lang.String getName() {
     return name;
   }
 
@@ -126,25 +192,25 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
    * Sets the value of the 'name' field.
    * @param value the value to set.
    */
-  public void setName(java.lang.CharSequence value) {
+  public void setName(java.lang.String value) {
     this.name = value;
   }
 
   /**
-   * Gets the value of the 'nodeTypes' field.
-   * @return The value of the 'nodeTypes' field.
+   * Gets the value of the 'description' field.
+   * @return The value of the 'description' field.
    */
-  public java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> getNodeTypes() {
-    return nodeTypes;
+  public java.lang.String getDescription() {
+    return description;
   }
 
 
   /**
-   * Sets the value of the 'nodeTypes' field.
+   * Sets the value of the 'description' field.
    * @param value the value to set.
    */
-  public void setNodeTypes(java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> value) {
-    this.nodeTypes = value;
+  public void setDescription(java.lang.String value) {
+    this.description = value;
   }
 
   /**
@@ -188,8 +254,11 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Node>
     implements org.apache.avro.data.RecordBuilder<Node> {
 
-    private java.lang.CharSequence name;
-    private java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> nodeTypes;
+    private com.cross_ni.cross.cdc.model.source.Operation __op;
+    private long node_id;
+    private long ca_set_id;
+    private java.lang.String name;
+    private java.lang.String description;
 
     /** Creates a new Builder */
     private Builder() {
@@ -202,13 +271,25 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
      */
     private Builder(com.cross_ni.cross.cdc.model.source.Node.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.name)) {
-        this.name = data().deepCopy(fields()[0].schema(), other.name);
+      if (isValidValue(fields()[0], other.__op)) {
+        this.__op = data().deepCopy(fields()[0].schema(), other.__op);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.nodeTypes)) {
-        this.nodeTypes = data().deepCopy(fields()[1].schema(), other.nodeTypes);
+      if (isValidValue(fields()[1], other.node_id)) {
+        this.node_id = data().deepCopy(fields()[1].schema(), other.node_id);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
+      if (isValidValue(fields()[2], other.ca_set_id)) {
+        this.ca_set_id = data().deepCopy(fields()[2].schema(), other.ca_set_id);
+        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
+      if (isValidValue(fields()[3], other.name)) {
+        this.name = data().deepCopy(fields()[3].schema(), other.name);
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
+      }
+      if (isValidValue(fields()[4], other.description)) {
+        this.description = data().deepCopy(fields()[4].schema(), other.description);
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
     }
 
@@ -218,21 +299,151 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
      */
     private Builder(com.cross_ni.cross.cdc.model.source.Node other) {
       super(SCHEMA$);
-      if (isValidValue(fields()[0], other.name)) {
-        this.name = data().deepCopy(fields()[0].schema(), other.name);
+      if (isValidValue(fields()[0], other.__op)) {
+        this.__op = data().deepCopy(fields()[0].schema(), other.__op);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.nodeTypes)) {
-        this.nodeTypes = data().deepCopy(fields()[1].schema(), other.nodeTypes);
+      if (isValidValue(fields()[1], other.node_id)) {
+        this.node_id = data().deepCopy(fields()[1].schema(), other.node_id);
         fieldSetFlags()[1] = true;
       }
+      if (isValidValue(fields()[2], other.ca_set_id)) {
+        this.ca_set_id = data().deepCopy(fields()[2].schema(), other.ca_set_id);
+        fieldSetFlags()[2] = true;
+      }
+      if (isValidValue(fields()[3], other.name)) {
+        this.name = data().deepCopy(fields()[3].schema(), other.name);
+        fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.description)) {
+        this.description = data().deepCopy(fields()[4].schema(), other.description);
+        fieldSetFlags()[4] = true;
+      }
+    }
+
+    /**
+      * Gets the value of the '__op' field.
+      * @return The value.
+      */
+    public com.cross_ni.cross.cdc.model.source.Operation getOp$1() {
+      return __op;
+    }
+
+
+    /**
+      * Sets the value of the '__op' field.
+      * @param value The value of '__op'.
+      * @return This builder.
+      */
+    public com.cross_ni.cross.cdc.model.source.Node.Builder setOp$1(com.cross_ni.cross.cdc.model.source.Operation value) {
+      validate(fields()[0], value);
+      this.__op = value;
+      fieldSetFlags()[0] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the '__op' field has been set.
+      * @return True if the '__op' field has been set, false otherwise.
+      */
+    public boolean hasOp$1() {
+      return fieldSetFlags()[0];
+    }
+
+
+    /**
+      * Clears the value of the '__op' field.
+      * @return This builder.
+      */
+    public com.cross_ni.cross.cdc.model.source.Node.Builder clearOp$1() {
+      __op = null;
+      fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'node_id' field.
+      * @return The value.
+      */
+    public long getNodeId() {
+      return node_id;
+    }
+
+
+    /**
+      * Sets the value of the 'node_id' field.
+      * @param value The value of 'node_id'.
+      * @return This builder.
+      */
+    public com.cross_ni.cross.cdc.model.source.Node.Builder setNodeId(long value) {
+      validate(fields()[1], value);
+      this.node_id = value;
+      fieldSetFlags()[1] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'node_id' field has been set.
+      * @return True if the 'node_id' field has been set, false otherwise.
+      */
+    public boolean hasNodeId() {
+      return fieldSetFlags()[1];
+    }
+
+
+    /**
+      * Clears the value of the 'node_id' field.
+      * @return This builder.
+      */
+    public com.cross_ni.cross.cdc.model.source.Node.Builder clearNodeId() {
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'ca_set_id' field.
+      * @return The value.
+      */
+    public long getCaSetId() {
+      return ca_set_id;
+    }
+
+
+    /**
+      * Sets the value of the 'ca_set_id' field.
+      * @param value The value of 'ca_set_id'.
+      * @return This builder.
+      */
+    public com.cross_ni.cross.cdc.model.source.Node.Builder setCaSetId(long value) {
+      validate(fields()[2], value);
+      this.ca_set_id = value;
+      fieldSetFlags()[2] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'ca_set_id' field has been set.
+      * @return True if the 'ca_set_id' field has been set, false otherwise.
+      */
+    public boolean hasCaSetId() {
+      return fieldSetFlags()[2];
+    }
+
+
+    /**
+      * Clears the value of the 'ca_set_id' field.
+      * @return This builder.
+      */
+    public com.cross_ni.cross.cdc.model.source.Node.Builder clearCaSetId() {
+      fieldSetFlags()[2] = false;
+      return this;
     }
 
     /**
       * Gets the value of the 'name' field.
       * @return The value.
       */
-    public java.lang.CharSequence getName() {
+    public java.lang.String getName() {
       return name;
     }
 
@@ -242,10 +453,10 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public com.cross_ni.cross.cdc.model.source.Node.Builder setName(java.lang.CharSequence value) {
-      validate(fields()[0], value);
+    public com.cross_ni.cross.cdc.model.source.Node.Builder setName(java.lang.String value) {
+      validate(fields()[3], value);
       this.name = value;
-      fieldSetFlags()[0] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -254,7 +465,7 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
       * @return True if the 'name' field has been set, false otherwise.
       */
     public boolean hasName() {
-      return fieldSetFlags()[0];
+      return fieldSetFlags()[3];
     }
 
 
@@ -264,47 +475,47 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
       */
     public com.cross_ni.cross.cdc.model.source.Node.Builder clearName() {
       name = null;
-      fieldSetFlags()[0] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'nodeTypes' field.
+      * Gets the value of the 'description' field.
       * @return The value.
       */
-    public java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> getNodeTypes() {
-      return nodeTypes;
+    public java.lang.String getDescription() {
+      return description;
     }
 
 
     /**
-      * Sets the value of the 'nodeTypes' field.
-      * @param value The value of 'nodeTypes'.
+      * Sets the value of the 'description' field.
+      * @param value The value of 'description'.
       * @return This builder.
       */
-    public com.cross_ni.cross.cdc.model.source.Node.Builder setNodeTypes(java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> value) {
-      validate(fields()[1], value);
-      this.nodeTypes = value;
-      fieldSetFlags()[1] = true;
+    public com.cross_ni.cross.cdc.model.source.Node.Builder setDescription(java.lang.String value) {
+      validate(fields()[4], value);
+      this.description = value;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'nodeTypes' field has been set.
-      * @return True if the 'nodeTypes' field has been set, false otherwise.
+      * Checks whether the 'description' field has been set.
+      * @return True if the 'description' field has been set, false otherwise.
       */
-    public boolean hasNodeTypes() {
-      return fieldSetFlags()[1];
+    public boolean hasDescription() {
+      return fieldSetFlags()[4];
     }
 
 
     /**
-      * Clears the value of the 'nodeTypes' field.
+      * Clears the value of the 'description' field.
       * @return This builder.
       */
-    public com.cross_ni.cross.cdc.model.source.Node.Builder clearNodeTypes() {
-      nodeTypes = null;
-      fieldSetFlags()[1] = false;
+    public com.cross_ni.cross.cdc.model.source.Node.Builder clearDescription() {
+      description = null;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -313,8 +524,11 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
     public Node build() {
       try {
         Node record = new Node();
-        record.name = fieldSetFlags()[0] ? this.name : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.nodeTypes = fieldSetFlags()[1] ? this.nodeTypes : (java.util.List<com.cross_ni.cross.cdc.model.source.NodeType>) defaultValue(fields()[1]);
+        record.__op = fieldSetFlags()[0] ? this.__op : (com.cross_ni.cross.cdc.model.source.Operation) defaultValue(fields()[0]);
+        record.node_id = fieldSetFlags()[1] ? this.node_id : (java.lang.Long) defaultValue(fields()[1]);
+        record.ca_set_id = fieldSetFlags()[2] ? this.ca_set_id : (java.lang.Long) defaultValue(fields()[2]);
+        record.name = fieldSetFlags()[3] ? this.name : (java.lang.String) defaultValue(fields()[3]);
+        record.description = fieldSetFlags()[4] ? this.description : (java.lang.String) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -347,20 +561,15 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
+    out.writeEnum(this.__op.ordinal());
+
+    out.writeLong(this.node_id);
+
+    out.writeLong(this.ca_set_id);
+
     out.writeString(this.name);
 
-    long size0 = this.nodeTypes.size();
-    out.writeArrayStart();
-    out.setItemCount(size0);
-    long actualSize0 = 0;
-    for (com.cross_ni.cross.cdc.model.source.NodeType e0: this.nodeTypes) {
-      actualSize0++;
-      out.startItem();
-      e0.customEncode(out);
-    }
-    out.writeArrayEnd();
-    if (actualSize0 != size0)
-      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+    out.writeString(this.description);
 
   }
 
@@ -369,51 +578,37 @@ public class Node extends org.apache.avro.specific.SpecificRecordBase implements
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+      this.__op = com.cross_ni.cross.cdc.model.source.Operation.values()[in.readEnum()];
 
-      long size0 = in.readArrayStart();
-      java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> a0 = this.nodeTypes;
-      if (a0 == null) {
-        a0 = new SpecificData.Array<com.cross_ni.cross.cdc.model.source.NodeType>((int)size0, SCHEMA$.getField("nodeTypes").schema());
-        this.nodeTypes = a0;
-      } else a0.clear();
-      SpecificData.Array<com.cross_ni.cross.cdc.model.source.NodeType> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.cross_ni.cross.cdc.model.source.NodeType>)a0 : null);
-      for ( ; 0 < size0; size0 = in.arrayNext()) {
-        for ( ; size0 != 0; size0--) {
-          com.cross_ni.cross.cdc.model.source.NodeType e0 = (ga0 != null ? ga0.peek() : null);
-          if (e0 == null) {
-            e0 = new com.cross_ni.cross.cdc.model.source.NodeType();
-          }
-          e0.customDecode(in);
-          a0.add(e0);
-        }
-      }
+      this.node_id = in.readLong();
+
+      this.ca_set_id = in.readLong();
+
+      this.name = in.readString();
+
+      this.description = in.readString();
 
     } else {
-      for (int i = 0; i < 2; i++) {
+      for (int i = 0; i < 5; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+          this.__op = com.cross_ni.cross.cdc.model.source.Operation.values()[in.readEnum()];
           break;
 
         case 1:
-          long size0 = in.readArrayStart();
-          java.util.List<com.cross_ni.cross.cdc.model.source.NodeType> a0 = this.nodeTypes;
-          if (a0 == null) {
-            a0 = new SpecificData.Array<com.cross_ni.cross.cdc.model.source.NodeType>((int)size0, SCHEMA$.getField("nodeTypes").schema());
-            this.nodeTypes = a0;
-          } else a0.clear();
-          SpecificData.Array<com.cross_ni.cross.cdc.model.source.NodeType> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.cross_ni.cross.cdc.model.source.NodeType>)a0 : null);
-          for ( ; 0 < size0; size0 = in.arrayNext()) {
-            for ( ; size0 != 0; size0--) {
-              com.cross_ni.cross.cdc.model.source.NodeType e0 = (ga0 != null ? ga0.peek() : null);
-              if (e0 == null) {
-                e0 = new com.cross_ni.cross.cdc.model.source.NodeType();
-              }
-              e0.customDecode(in);
-              a0.add(e0);
-            }
-          }
+          this.node_id = in.readLong();
+          break;
+
+        case 2:
+          this.ca_set_id = in.readLong();
+          break;
+
+        case 3:
+          this.name = in.readString();
+          break;
+
+        case 4:
+          this.description = in.readString();
           break;
 
         default:

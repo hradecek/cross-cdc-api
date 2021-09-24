@@ -1,6 +1,5 @@
 package com.cross_ni.cross.cdc.serialization.json;
 
-import com.cross_ni.cross.cdc.model.sink.Node;
 import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
 
 import org.apache.kafka.common.serialization.Serde;
@@ -26,9 +25,9 @@ public class JsonSerdes {
         throw new AssertionError("Cannot instantiate utility class");
     }
 
-    public static Serde<Node> SinkNode() {
-        return createSerde(Node.class);
-    }
+//    public static Serde<Node> SinkNode() {
+//        return createSerde(Node.class);
+//    }
 
     @SuppressWarnings("unchecked")
     public static <T> Serde<T> serde(Class<T> modelClass) {

@@ -5,15 +5,24 @@
     "doc": "TODO: Represents CROSS Node",
     "fields": [
         {
+            "name": "__op",
+            "type": "com.cross_ni.cross.cdc.model.source.Operation"
+        },
+        {
+            "name": "node_id",
+            "type": "long"
+        },
+        {
+            "name": "ca_set_id",
+            "type": "long"
+        },
+        {
             "name": "name",
             "type": "string"
         },
         {
-            "name": "nodeTypes",
-            "type": {
-                "type": "array",
-                "items": "com.cross_ni.cross.cdc.model.source.NodeType"
-            }
+            "name": "description",
+            "type": "string"
         }
     ]
 }

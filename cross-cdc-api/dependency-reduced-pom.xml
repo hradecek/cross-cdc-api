@@ -8,23 +8,6 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.avro</groupId>
-        <artifactId>avro-maven-plugin</artifactId>
-        <version>${version.avro}</version>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>schema</goal>
-            </goals>
-            <configuration>
-              <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
-              <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <source>1.8</source>
@@ -63,6 +46,7 @@
             <configuration>
               <sources>
                 <source>target/jsonschema2pojo</source>
+                <source>src-gen/main/java</source>
               </sources>
             </configuration>
           </execution>
@@ -86,7 +70,88 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>avro</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>${basedir}/src-gen</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-maven-plugin</artifactId>
+            <version>${version.avro}</version>
+            <executions>
+              <execution>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>schema</goal>
+                </goals>
+                <configuration>
+                  <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+                  <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
+                  <stringType>String</stringType>
+                  <imports>
+                    <import>${project.basedir}/src/main/avro/ca_definition.avsc</import>
+                    <import>${project.basedir}/src/main/avro/node_type.avsc</import>
+                    <import>${project.basedir}/src/main/avro/operation.avsc</import>
+                  </imports>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-schema-registry-maven-plugin</artifactId>
+            <version>6.1.1</version>
+            <configuration>
+              <schemaRegistryUrls>
+                <param>${schema-registry-url}</param>
+              </schemaRegistryUrls>
+              <references>
+                <crossdb.public.node-value>
+                  <reference>
+                    <name>com.cross_ni.cross.cdc.model.source.Node</name>
+                    <subject>com.cross_ni.cross.cdc.model.source.Node</subject>
+                    <version>1</version>
+                  </reference>
+                </crossdb.public.node-value>
+              </references>
+              <subjects>
+                <crossdb.public.node-value>src/main/avro/node.avsc</crossdb.public.node-value>
+              </subjects>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+  <repositories>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>confluent</id>
+      <url>https://packages.confluent.io/maven/</url>
+    </repository>
+  </repositories>
   <dependencies>
+    <dependency>
+      <groupId>io.confluent</groupId>
+      <artifactId>kafka-serde-tools-package</artifactId>
+      <version>6.2.0</version>
+      <type>pom</type>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -105,5 +170,6 @@
     <version.reflections>0.9.12</version.reflections>
     <main.class>com.cross_ni.cross.cdc.Bootstrap</main.class>
     <maven.compiler.source>${version.java}</maven.compiler.source>
+    <schema-registry-url>http://localhost:8081</schema-registry-url>
   </properties>
 </project>

@@ -18,13 +18,14 @@
     <maven.compiler.source>${version.java}</maven.compiler.source>
     <maven.compiler.target>${version.java}</maven.compiler.target>
     <main.class>com.cross_ni.cross.cdc.Bootstrap</main.class>
+    <schema-registry-url>http://localhost:8081</schema-registry-url>
     <!-- Maven plugins versions -->
     <version.maven.shade.plugin>3.2.4</version.maven.shade.plugin>
     <!-- Libraries versions -->
     <version.kafka.streams>2.8.0</version.kafka.streams>
     <version.gson>2.8.8</version.gson>
     <version.slf4j.simple>1.7.32</version.slf4j.simple>
-<!--    <version.guava>30.1.1-jre</version.guava>-->
+    <!--    <version.guava>30.1.1-jre</version.guava>-->
     <version.reflections>0.9.12</version.reflections>
     <version.avro>1.10.2</version.avro>
   </properties>
@@ -54,6 +55,12 @@
       <artifactId>avro</artifactId>
       <version>1.10.2</version>
     </dependency>
+    <dependency>
+      <groupId>io.confluent</groupId>
+      <artifactId>kafka-serde-tools-package</artifactId>
+      <version>6.2.0</version>
+      <type>pom</type>
+    </dependency>
     <!-- Utility libraries -->
     <dependency>
       <groupId>org.reflections</groupId>
@@ -74,6 +81,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -169,8 +177,11 @@
                   <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
                   <!-- TODO: to property -->
                   <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
+                  <stringType>String</stringType>
                   <imports>
+                    <import>${project.basedir}/src/main/avro/ca_definition.avsc</import>
                     <import>${project.basedir}/src/main/avro/node_type.avsc</import>
+                    <import>${project.basedir}/src/main/avro/operation.avsc</import>
                   </imports>
                 </configuration>
               </execution>
@@ -180,4 +191,11 @@
       </build>
     </profile>
   </profiles>
+
+  <repositories>
+    <repository>
+      <id>confluent</id>
+      <url>https://packages.confluent.io/maven/</url>
+    </repository>
+  </repositories>
 </project>

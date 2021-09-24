@@ -1,0 +1,15 @@
+{
+    "namespace": "com.cross_ni.cross.cdc.model.source",
+    "type": "record",
+    "name": "NodeTypes",
+    "doc": "TODO: Aggregated",
+    "fields": [
+        {
+            "name": "nodeTypes",
+            "type": {
+                "type": "array",
+                "items": "com.cross_ni.cross.cdc.model.source.NodeType"
+            }
+        }
+    ]
+}

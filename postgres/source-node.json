@@ -7,7 +7,7 @@
   "database.port": "5432", 
   "database.user": "postgres", 
   "database.password": "postgres", 
-  "database.dbname" : "cross_master", 
+  "database.dbname" : "test_project_master", 
   "database.server.name": "crossdb",
   "table.include.list": "public.node",
   "column.exclude.list": "public.node.optlck",
@@ -19,6 +19,7 @@
   "transforms.extractPK.field": "node_id",
   "key.converter": "org.apache.kafka.connect.storage.StringConverter",
   "key.converter.schemas.enable": "false",
-  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
-  "value.converter.schemas.enable": "false"
+  "value.converter": "io.confluent.connect.avro.AvroConverter",
+  "value.converter.schemas.enable": "false",
+  "value.converter.schema.registry.url": "http://schema-registry:8081"
 }

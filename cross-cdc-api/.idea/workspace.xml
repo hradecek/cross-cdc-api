@@ -5,40 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CustomAttribute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CustomAttributes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/NodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/NodeTypes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttribute.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttributeDefinition.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttributeDefinition.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/NodeType.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/NodeType.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definitions.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-ca-definitions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-types.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-nodes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-nodes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/check-status" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/register-connectors.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/register-connectors.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-nodes.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../scripts/reset-application.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/reset-application.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -50,6 +44,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="enabledProfiles">
+      <list>
+        <option value="avro" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="1yXTzqcBI15nbezfphheAhfqYzr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -63,15 +64,51 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/avro" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/avro" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.Bootstrap">
+    <configuration name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cross_ni.cross.cdc.Bootstrap" />
+      <module name="cdc-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cross_ni.cross.cdc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="listen" type="Remote">
+      <module name="cdc-api" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="true" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="5005" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Bootstrap" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -90,7 +127,8 @@
       <workItem from="1632415035945" duration="49000" />
       <workItem from="1632423477850" duration="673000" />
       <workItem from="1632424363225" duration="87000" />
-      <workItem from="1632424560532" duration="4130000" />
+      <workItem from="1632424560532" duration="9080000" />
+      <workItem from="1632483529928" duration="762000" />
     </task>
     <servers />
   </component>
@@ -108,5 +146,26 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/avro/avro/1.10.2/avro-1.10.2.jar!/org/apache/avro/Schema.class</url>
+          <line>1134</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/avro/avro/1.10.2/avro-1.10.2.jar!/org/apache/avro/Schema.class</url>
+          <line>1126</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/avro/avro/1.10.2/avro-1.10.2.jar!/org/apache/avro/Schema.class</url>
+          <line>489</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
