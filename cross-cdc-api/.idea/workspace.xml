@@ -5,19 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/CADefinition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/CAValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeTypes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Operation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/avro/ca_definition.avsc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/avro/ca_value.avsc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/avro/node.avsc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/avro/node_node_type.avsc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/avro/node_type.avsc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/avro/node_types.avsc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/avro/operation.avsc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/avro/AvroSerdes.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-nodes.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/reset-application.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/reset-application.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,13 +54,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="enabledProfiles">
-      <list>
-        <option value="avro" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectId" id="1yXTzqcBI15nbezfphheAhfqYzr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -65,7 +67,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/avro" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -73,16 +75,30 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source" />
       <recent name="$PROJECT_DIR$/src/main/avro" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Bootstrap">
+  <component name="RunManager" selected="Application.JsonSerdes">
     <configuration name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.cross_ni.cross.cdc.Bootstrap" />
       <module name="cdc-api" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.cross_ni.cross.cdc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JsonSerdes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cross_ni.cross.cdc.serialization.json.JsonSerdes" />
+      <module name="cdc-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cross_ni.cross.cdc.serialization.json.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,6 +122,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.JsonSerdes" />
         <item itemvalue="Application.Bootstrap" />
       </list>
     </recent_temporary>
@@ -129,11 +146,25 @@
       <workItem from="1632424363225" duration="87000" />
       <workItem from="1632424560532" duration="9080000" />
       <workItem from="1632483529928" duration="762000" />
+      <workItem from="1632645069135" duration="7276000" />
+      <workItem from="1632685228995" duration="686000" />
+      <workItem from="1632686565570" duration="1834000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -165,7 +196,17 @@
           <line>489</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="reflections.get(Object.class)" language="JAVA" custom="com.sun.jndi.ldap.Obj" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

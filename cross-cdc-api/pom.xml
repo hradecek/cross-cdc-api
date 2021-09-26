@@ -25,9 +25,7 @@
     <version.kafka.streams>2.8.0</version.kafka.streams>
     <version.gson>2.8.8</version.gson>
     <version.slf4j.simple>1.7.32</version.slf4j.simple>
-    <!--    <version.guava>30.1.1-jre</version.guava>-->
-    <version.reflections>0.9.12</version.reflections>
-    <version.avro>1.10.2</version.avro>
+    <version.reflections>0.9.11</version.reflections>
   </properties>
 
   <dependencies>
@@ -49,19 +47,12 @@
       <artifactId>slf4j-simple</artifactId>
       <version>${version.slf4j.simple}</version>
     </dependency>
-    <!-- De/Serialization -->
-    <dependency>
-      <groupId>org.apache.avro</groupId>
-      <artifactId>avro</artifactId>
-      <version>1.10.2</version>
-    </dependency>
-    <dependency>
-      <groupId>io.confluent</groupId>
-      <artifactId>kafka-serde-tools-package</artifactId>
-      <version>6.2.0</version>
-      <type>pom</type>
-    </dependency>
     <!-- Utility libraries -->
+<!--    <dependency>-->
+<!--      <groupId>com.google.guava</groupId>-->
+<!--      <artifactId>guava</artifactId>-->
+<!--      <version>30.1.1-jre</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
@@ -87,26 +78,26 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>${version.maven.shade.plugin}</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>${main.class}</mainClass>
-                </transformer>
-              </transformers>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-shade-plugin</artifactId>-->
+<!--        <version>${version.maven.shade.plugin}</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>package</phase>-->
+<!--            <goals>-->
+<!--              <goal>shade</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <transformers>-->
+<!--                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+<!--                  <mainClass>${main.class}</mainClass>-->
+<!--                </transformer>-->
+<!--              </transformers>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -131,71 +122,32 @@
         <groupId>org.jsonschema2pojo</groupId>
         <artifactId>jsonschema2pojo-maven-plugin</artifactId>
         <version>1.1.1</version>
-        <configuration>
-          <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/sink</sourceDirectory>
-          <targetPackage>com.cross_ni.cross.cdc.model.sink</targetPackage>
-        </configuration>
         <executions>
           <execution>
+            <id>generate-sink-pojos</id>
             <goals>
               <goal>generate</goal>
             </goals>
+            <configuration>
+              <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/sink</sourceDirectory>
+              <targetPackage>com.cross_ni.cross.cdc.model.sink</targetPackage>
+              <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-source-pojos</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <annotationStyle>gson</annotationStyle>
+              <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/source</sourceDirectory>
+              <targetPackage>com.cross_ni.cross.cdc.model.source</targetPackage>
+              <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
+            </configuration>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>avro</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-clean-plugin</artifactId>
-            <version>3.0.0</version>
-            <configuration>
-              <filesets>
-                <fileset>
-                  <directory>${basedir}/src-gen</directory>
-                </fileset>
-              </filesets>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.avro</groupId>
-            <artifactId>avro-maven-plugin</artifactId>
-            <version>${version.avro}</version>
-            <executions>
-              <execution>
-                <phase>generate-sources</phase>
-                <goals>
-                  <goal>schema</goal>
-                </goals>
-                <configuration>
-                  <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
-                  <!-- TODO: to property -->
-                  <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
-                  <stringType>String</stringType>
-                  <imports>
-                    <import>${project.basedir}/src/main/avro/ca_definition.avsc</import>
-                    <import>${project.basedir}/src/main/avro/node_type.avsc</import>
-                    <import>${project.basedir}/src/main/avro/operation.avsc</import>
-                  </imports>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
-  <repositories>
-    <repository>
-      <id>confluent</id>
-      <url>https://packages.confluent.io/maven/</url>
-    </repository>
-  </repositories>
 </project>

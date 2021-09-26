@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "node_id": {
+      "type": "string"
+    },
+    "discriminator": {
+      "type": "string"
+    }
+  }
+}

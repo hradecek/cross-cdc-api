@@ -2,7 +2,6 @@ package com.cross_ni.cross.cdc;
 
 import com.cross_ni.cross.cdc.topology.CdcTopology;
 
-import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
@@ -63,8 +62,6 @@ public class Bootstrap {
         properties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVER);
         properties.put(StreamsConfig.STATE_DIR_CONFIG, STATE_DIR_CONFIG);
         properties.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 0);
-        properties.put("schema.registry.url", "http://localhost:8081");
-        properties.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, SpecificAvroSerde.class);
 
         return properties;
     }

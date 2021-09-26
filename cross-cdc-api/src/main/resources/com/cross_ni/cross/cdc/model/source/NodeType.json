@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "discriminator": {
+      "type": "string"
+    },
+    "capacity_full": {
+      "type": "string"
+    },
+    "multiparent": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "root_type": {
+      "type": "string"
+    }
+  }
+}

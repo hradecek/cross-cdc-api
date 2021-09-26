@@ -1,11 +1,14 @@
 package com.cross_ni.cross.cdc.serialization.json;
 
+import com.cross_ni.cross.cdc.model.source.NodeNodeType;
 import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
 
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.reflections.Reflections;
+import org.reflections.scanners.SubTypesScanner;
 
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -16,7 +19,7 @@ public class JsonSerdes {
     private static final Map<Class<?>, Serde<?>> SERDES = new HashMap<>();
 
     static {
-        for (Class<?> modelClass : findAllModelsWithGeneratedSerde()) {
+        for (Class<?> modelClass : findAllSourceModels()) {
             SERDES.put(modelClass, createSerde(modelClass));
         }
     }
@@ -25,18 +28,17 @@ public class JsonSerdes {
         throw new AssertionError("Cannot instantiate utility class");
     }
 
-//    public static Serde<Node> SinkNode() {
-//        return createSerde(Node.class);
-//    }
+    public static void main(String[] args) {
+    }
 
     @SuppressWarnings("unchecked")
     public static <T> Serde<T> serde(Class<T> modelClass) {
         return (Serde<T>) SERDES.get(modelClass);
     }
 
-    private static Set<Class<?>> findAllModelsWithGeneratedSerde() {
-        final Reflections reflections = new Reflections(JAVA_PACKAGE_SOURCE_MODEL);
-        return reflections.getTypesAnnotatedWith(GeneratedSerde.class);
+    private static Set<Class<?>> findAllSourceModels() {
+        final Reflections reflections = new Reflections(JAVA_PACKAGE_SOURCE_MODEL, new SubTypesScanner(false));
+        return reflections.getTypesAnnotatedWith(Generated.class);
     }
 
     private static <T> Serde<T> createSerde(Class<T> clazz) {

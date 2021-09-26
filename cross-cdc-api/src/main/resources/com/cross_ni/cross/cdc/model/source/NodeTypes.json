@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "nodeTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "NodeType.json"
+      }
+    }
+  }
+}

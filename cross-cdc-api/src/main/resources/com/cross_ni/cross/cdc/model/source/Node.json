@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "__op": {
+      "type": "Operation"
+    },
+    "node_id": {
+      "type": "string"
+    },
+    "capacity_free": {
+      "type": "string"
+    },
+    "capacity_full": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "inherit_geometry": {
+      "type": "string"
+    },
+    "node_name": {
+      "type": "string"
+    },
+    "ca_set_id": {
+      "type": "string"
+    },
+    "material_id": {
+      "type": "string"
+    },
+    "node_geom_id": {
+      "type": "string"
+    },
+    "node_status_id": {
+      "type": "string"
+    }
+  }
+}

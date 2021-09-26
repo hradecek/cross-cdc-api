@@ -1,7 +1,0 @@
-{
-    "namespace": "com.cross_ni.cross.cdc.model.source",
-    "type": "enum",
-    "doc": "TODO",
-    "name": "Operation",
-    "symbols": [ "c", "r", "u", "d" ]
-}

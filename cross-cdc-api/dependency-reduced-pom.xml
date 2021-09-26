@@ -9,6 +9,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -58,88 +59,34 @@
         <version>1.1.1</version>
         <executions>
           <execution>
+            <id>generate-sink-pojos</id>
             <goals>
               <goal>generate</goal>
             </goals>
+            <configuration>
+              <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/sink</sourceDirectory>
+              <targetPackage>com.cross_ni.cross.cdc.model.sink</targetPackage>
+              <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-source-pojos</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <annotationStyle>gson</annotationStyle>
+              <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/source</sourceDirectory>
+              <targetPackage>com.cross_ni.cross.cdc.model.source</targetPackage>
+              <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+            </configuration>
           </execution>
         </executions>
-        <configuration>
-          <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/sink</sourceDirectory>
-          <targetPackage>com.cross_ni.cross.cdc.model.sink</targetPackage>
-        </configuration>
       </plugin>
     </plugins>
   </build>
-  <profiles>
-    <profile>
-      <id>avro</id>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-clean-plugin</artifactId>
-            <version>3.0.0</version>
-            <configuration>
-              <filesets>
-                <fileset>
-                  <directory>${basedir}/src-gen</directory>
-                </fileset>
-              </filesets>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.avro</groupId>
-            <artifactId>avro-maven-plugin</artifactId>
-            <version>${version.avro}</version>
-            <executions>
-              <execution>
-                <phase>generate-sources</phase>
-                <goals>
-                  <goal>schema</goal>
-                </goals>
-                <configuration>
-                  <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
-                  <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
-                  <stringType>String</stringType>
-                  <imports>
-                    <import>${project.basedir}/src/main/avro/ca_definition.avsc</import>
-                    <import>${project.basedir}/src/main/avro/node_type.avsc</import>
-                    <import>${project.basedir}/src/main/avro/operation.avsc</import>
-                  </imports>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>io.confluent</groupId>
-            <artifactId>kafka-schema-registry-maven-plugin</artifactId>
-            <version>6.1.1</version>
-            <configuration>
-              <schemaRegistryUrls>
-                <param>${schema-registry-url}</param>
-              </schemaRegistryUrls>
-              <references>
-                <crossdb.public.node-value>
-                  <reference>
-                    <name>com.cross_ni.cross.cdc.model.source.Node</name>
-                    <subject>com.cross_ni.cross.cdc.model.source.Node</subject>
-                    <version>1</version>
-                  </reference>
-                </crossdb.public.node-value>
-              </references>
-              <subjects>
-                <crossdb.public.node-value>src/main/avro/node.avsc</crossdb.public.node-value>
-              </subjects>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
   <repositories>
     <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
       <id>confluent</id>
       <url>https://packages.confluent.io/maven/</url>
     </repository>
@@ -167,7 +114,7 @@
     <maven.compiler.target>${version.java}</maven.compiler.target>
     <version.maven.shade.plugin>3.2.4</version.maven.shade.plugin>
     <version.java>8</version.java>
-    <version.reflections>0.9.12</version.reflections>
+    <version.reflections>0.9.11</version.reflections>
     <main.class>com.cross_ni.cross.cdc.Bootstrap</main.class>
     <maven.compiler.source>${version.java}</maven.compiler.source>
     <schema-registry-url>http://localhost:8081</schema-registry-url>
