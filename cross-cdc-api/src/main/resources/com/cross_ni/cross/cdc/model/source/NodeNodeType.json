@@ -2,6 +2,9 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "__op": {
+      "type": "string"
+    },
     "node_id": {
       "type": "string"
     },

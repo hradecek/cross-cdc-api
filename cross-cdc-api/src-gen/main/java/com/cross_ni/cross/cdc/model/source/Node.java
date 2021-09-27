@@ -10,7 +10,7 @@ public class Node {
 
     @SerializedName("__op")
     @Expose
-    private Object op;
+    private String op;
     @SerializedName("node_id")
     @Expose
     private String nodeId;
@@ -42,11 +42,11 @@ public class Node {
     @Expose
     private String nodeStatusId;
 
-    public Object getOp() {
+    public String getOp() {
         return op;
     }
 
-    public void setOp(Object op) {
+    public void setOp(String op) {
         this.op = op;
     }
 

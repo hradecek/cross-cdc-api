@@ -3,7 +3,7 @@
   "additionalProperties": false,
   "properties": {
     "__op": {
-      "type": "Operation"
+      "type": "string"
     },
     "node_id": {
       "type": "string"

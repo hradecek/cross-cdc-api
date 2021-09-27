@@ -6,27 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/CADefinition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/CAValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeTypes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Operation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/avro/ca_definition.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/avro/ca_value.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/avro/node.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/avro/node_node_type.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/avro/node_type.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/avro/node_types.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/avro/operation.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/avro/AvroSerdes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/NodeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/NodeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeCdcSinkValueJoinerFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/NodeType.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/NodeType.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/Node.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/Node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/NodeNodeType.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/NodeNodeType.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/Operation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-types.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +59,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -75,11 +67,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source" />
       <recent name="$PROJECT_DIR$/src/main/avro" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.JsonSerdes">
+  <component name="RunManager" selected="Application.Bootstrap">
     <configuration name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.cross_ni.cross.cdc.Bootstrap" />
       <module name="cdc-api" />
@@ -122,8 +115,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.JsonSerdes" />
         <item itemvalue="Application.Bootstrap" />
+        <item itemvalue="Application.JsonSerdes" />
       </list>
     </recent_temporary>
   </component>
@@ -196,16 +189,14 @@
           <line>489</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="reflections.get(Object.class)" language="JAVA" custom="com.sun.jndi.ldap.Obj" />
+        <watch expression="val" language="JAVA" />
+        <watch expression="key" language="JAVA" />
+        <watch expression="value.getDiscriminator().equals(&quot;VIRTUAL_VRF&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

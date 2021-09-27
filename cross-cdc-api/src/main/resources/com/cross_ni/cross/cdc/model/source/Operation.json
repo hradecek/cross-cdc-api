@@ -1,9 +1,0 @@
-{
-  "type": "object",
-  "additionalProperties": false,
-  "properties": {
-    "__op": {
-      "type": "string"
-    }
-  }
-}

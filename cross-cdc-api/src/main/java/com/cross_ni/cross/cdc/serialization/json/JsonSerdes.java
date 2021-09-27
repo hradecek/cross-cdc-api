@@ -1,25 +1,34 @@
 package com.cross_ni.cross.cdc.serialization.json;
 
+import com.cross_ni.cross.cdc.model.source.Node;
 import com.cross_ni.cross.cdc.model.source.NodeNodeType;
-import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
+import com.cross_ni.cross.cdc.model.source.NodeType;
 
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
-import org.reflections.Reflections;
-import org.reflections.scanners.SubTypesScanner;
 
-import javax.annotation.Generated;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class JsonSerdes {
 
-    private static final String JAVA_PACKAGE_SOURCE_MODEL = "com.cross_ni.cross.cdc.model.source";
+    private static final Set<Class<?>> SOURCE_MODELS = new HashSet<>();
+    private static final Set<Class<?>> SINK_MODELS = new HashSet<>();
     private static final Map<Class<?>, Serde<?>> SERDES = new HashMap<>();
 
     static {
+        SOURCE_MODELS.add(Node.class);
+        SOURCE_MODELS.add(NodeType.class);
+        SOURCE_MODELS.add(NodeNodeType.class);
+
+        SINK_MODELS.add(com.cross_ni.cross.cdc.model.sink.NodeType.class);
+
         for (Class<?> modelClass : findAllSourceModels()) {
+            SERDES.put(modelClass, createSerde(modelClass));
+        }
+        for (Class<?> modelClass : findAllSinkModels()) {
             SERDES.put(modelClass, createSerde(modelClass));
         }
     }
@@ -28,17 +37,17 @@ public class JsonSerdes {
         throw new AssertionError("Cannot instantiate utility class");
     }
 
-    public static void main(String[] args) {
-    }
-
     @SuppressWarnings("unchecked")
     public static <T> Serde<T> serde(Class<T> modelClass) {
         return (Serde<T>) SERDES.get(modelClass);
     }
 
     private static Set<Class<?>> findAllSourceModels() {
-        final Reflections reflections = new Reflections(JAVA_PACKAGE_SOURCE_MODEL, new SubTypesScanner(false));
-        return reflections.getTypesAnnotatedWith(Generated.class);
+        return SOURCE_MODELS;
+    }
+
+    private static Set<Class<?>> findAllSinkModels() {
+        return SINK_MODELS;
     }
 
     private static <T> Serde<T> createSerde(Class<T> clazz) {

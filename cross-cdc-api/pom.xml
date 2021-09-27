@@ -48,16 +48,6 @@
       <version>${version.slf4j.simple}</version>
     </dependency>
     <!-- Utility libraries -->
-<!--    <dependency>-->
-<!--      <groupId>com.google.guava</groupId>-->
-<!--      <artifactId>guava</artifactId>-->
-<!--      <version>30.1.1-jre</version>-->
-<!--    </dependency>-->
-    <dependency>
-      <groupId>org.reflections</groupId>
-      <artifactId>reflections</artifactId>
-      <version>${version.reflections}</version>
-    </dependency>
     <!-- TODO: Using only in PoC stage - will be removed -->
     <dependency>
       <groupId>org.projectlombok</groupId>
