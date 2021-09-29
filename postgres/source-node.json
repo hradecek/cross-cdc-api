@@ -19,7 +19,6 @@
   "transforms.extractPK.field": "node_id",
   "key.converter": "org.apache.kafka.connect.storage.StringConverter",
   "key.converter.schemas.enable": "false",
-  "value.converter": "io.confluent.connect.avro.AvroConverter",
-  "value.converter.schemas.enable": "false",
-  "value.converter.schema.registry.url": "http://schema-registry:8081"
+  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "value.converter.schemas.enable": "false"
 }

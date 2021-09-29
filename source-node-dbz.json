@@ -1,0 +1,16 @@
+{
+  "connector.class": "io.debezium.connector.postgresql.PostgresConnector", 
+  "tasks.max": 1,
+  "plugin.name": "pgoutput",
+  "slot.name": "debezium_nodes",
+  "database.hostname": "172.17.0.1", 
+  "database.port": "5432", 
+  "database.user": "postgres", 
+  "database.password": "postgres", 
+  "database.dbname" : "test_project_master", 
+  "database.server.name": "crossdb",
+  "table.include.list": "public.node",
+  "column.exclude.list": "public.node.optlck",
+  "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "value.converter": "org.apache.kafka.connect.json.JsonConverter"
+}

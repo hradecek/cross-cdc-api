@@ -2,19 +2,34 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "operation": {
+      "type": "string"
+    },
+    "attribute_type": {
+      "$ref": "AttributeType.json#/definitions/attribute_type"
+    },
+    "node_id": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     },
-    "customAttributes": {
-      "type": "array",
-      "items": {
-        "$ref": "CustomAttribute.json"
-      }
+    "description": {
+      "type": "string"
+    },
+    "inherit_geometry": {
+      "type": "boolean"
+    },
+    "capacity_full": {
+      "type": "number"
+    },
+    "capacity_free": {
+      "type": "number"
     },
     "nodeTypes": {
       "type": "array",
       "items": {
-        "$ref": "NodeType.json"
+        "type": "string"
       }
     }
   }

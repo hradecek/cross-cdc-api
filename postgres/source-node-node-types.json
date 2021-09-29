@@ -17,7 +17,7 @@
   "transforms.unwrap.delete.handling.mode": "rewrite",
   "transforms.extractPK.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
   "transforms.extractPK.field": "node_id",
-  "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "key.converter": "org.apache.kafka.connect.storage.StringConverter",
   "key.converter.schemas.enable": "false",
   "value.converter": "org.apache.kafka.connect.json.JsonConverter",
   "value.converter.schemas.enable": "false"
