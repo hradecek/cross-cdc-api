@@ -5,28 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/CustomAttribute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/CustomAttributeDefinition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/NodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Operation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeTypes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Operation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeCdcSinkValueJoinerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeCdcSinkValueJoinerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttribute.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttributeDefinition.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/NodeType.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/NodeTypes.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definitions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-node-types.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-node.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/register-connectors.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/register-connectors.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scripts/reset-application.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/reset-application.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,6 +56,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink" />
@@ -79,6 +70,9 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source" />
       <recent name="$PROJECT_DIR$/src/main/avro" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cross_ni.cross.cdc.topology" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Bootstrap">
@@ -152,6 +146,8 @@
       <workItem from="1632685228995" duration="686000" />
       <workItem from="1632686565570" duration="1834000" />
       <workItem from="1632895973621" duration="18366000" />
+      <workItem from="1632939500186" duration="4623000" />
+      <workItem from="1632983815679" duration="9289000" />
     </task>
     <servers />
   </component>
@@ -204,6 +200,7 @@
     <watches-manager>
       <configuration name="Application">
         <watch expression="node.getNodeTypes()" language="JAVA" />
+        <watch expression="nodesSplit.get(Branched.as(&quot;SNAPSHOTS&quot;))" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

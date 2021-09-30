@@ -21,6 +21,11 @@ public class NodeTypes {
         } else {
             discriminators.add(sourceNodeNodeType.getDiscriminator());
         }
+        if (sourceNodeNodeType.getOp().equals("r")) {
+            operation = "r";
+        } else {
+            operation = "u";
+        }
         this.nodeId = nodeId;
 
         return this;
