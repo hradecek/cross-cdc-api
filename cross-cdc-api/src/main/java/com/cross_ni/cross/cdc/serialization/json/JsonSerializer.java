@@ -8,7 +8,8 @@ import org.apache.kafka.common.serialization.Serializer;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-class JsonSerializer<T> implements Serializer<T> {
+// TODO: IntelliJ has a problem when class is not public. Why?
+public class JsonSerializer<T> implements Serializer<T> {
 
     private final Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
 

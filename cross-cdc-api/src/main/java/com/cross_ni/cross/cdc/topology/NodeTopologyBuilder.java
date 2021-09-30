@@ -1,6 +1,7 @@
 package com.cross_ni.cross.cdc.topology;
 
 import com.cross_ni.cross.cdc.model.aggregate.ExternalIds;
+import com.cross_ni.cross.cdc.model.aggregate.NodeSnapshot;
 import com.cross_ni.cross.cdc.model.aggregate.NodeTypes;
 import com.cross_ni.cross.cdc.model.source.ExternalId;
 import com.cross_ni.cross.cdc.model.source.Node;
@@ -33,65 +34,19 @@ class NodeTopologyBuilder {
     private final StreamsBuilder builder = new StreamsBuilder();
 
     public Topology build() {
-        final KTable<String, NodeTypes> nodeTypes = nodeNodeTypes();
-        final KTable<String, ExternalIds> externalIds = externalIds();
-        final KTable<String, Node> nodes = nodes();
-
-        nodes
-            .join(nodeTypes, (node, nts) -> {
-                final com.cross_ni.cross.cdc.model.sink.Node sinkNode;
-                if (node.getOp().equals("r") && nts.getOperation().equals("r")) {
-                    sinkNode = NodeCdcSinkValueJoinerFacade.nodeMapper(node);
-                    sinkNode.setOperation("r");
-                    sinkNode.setNodeTypes(new ArrayList<>(nts.getDiscriminators()));
-                } else {
-                    if (node.getSourceTsMs() > nts.getSourceTsMs()) {
-                        sinkNode = NodeCdcSinkValueJoinerFacade.nodeMapper(node);
-                        sinkNode.setOperation(node.getOp());
-                    } else {
-                        sinkNode = new com.cross_ni.cross.cdc.model.sink.Node();
-                        sinkNode.setNodeId(node.getNodeId());
-                        sinkNode.setNodeTypes(new ArrayList<>(nts.getDiscriminators()));
-                        sinkNode.setOperation(nts.getOperation());
-                    }
-                }
-                return sinkNode;
-            })
-            .join(externalIds, (node, eids) -> {
-                if (node.getOperation().equals("r") && eids.getOperation().equals("r")) {
-                    List<com.cross_ni.cross.cdc.model.sink.ExternalId> esss = eids.getExternalIds().stream().map(e -> {
-                        final com.cross_ni.cross.cdc.model.sink.ExternalId sinkEid = new com.cross_ni.cross.cdc.model.sink.ExternalId();
-                        sinkEid.setOperation(e.getOp());
-                        sinkEid.setExternalId(e.getExternalId());
-                        sinkEid.setSystemId(e.getSystemId());
-                        return sinkEid;
-                    }).collect(Collectors.toList());
-                    node.setExternalIds(esss);
-                } else {
-                    if (node.getSourceTsMs() > eids.getSourceTsMs()) {
-                        sinkNode = NodeCdcSinkValueJoinerFacade.nodeMapper(node);
-                        sinkNode.setOperation(node.getOp());
-                    } else {
-                        sinkNode = new com.cross_ni.cross.cdc.model.sink.Node();
-                        sinkNode.setNodeId(node.getNodeId());
-                        sinkNode.setNodeTypes(new ArrayList<>(nts.getDiscriminators()));
-                        sinkNode.setOperation(nts.getOperation());
-                    }
-                }
-                return node;
-            })
-            .mapValues(n -> {
-                n.setSourceTsMs(null);
-                return n;
-            })
+        nodes()
+            .join(nodeNodeTypes(), NodeSnapshot::valueJoiner)
+            .join(externalIds(), NodeSnapshot::valueJoiner)
             .toStream()
-            .to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(com.cross_ni.cross.cdc.model.sink.Node.class)));
+//            .foreach((k, v) -> System.out.println(k + " " + v));
+            .to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)));
 
         return builder.build();
     }
 
-    private KTable<String, Node> nodes() {
-        return builder.table(TOPIC_NAME_SOURCE_NODE, Consumed.with(Serdes.String(), JsonSerdes.serde(Node.class)));
+    private KTable<String, NodeSnapshot> nodes() {
+        return builder.table(TOPIC_NAME_SOURCE_NODE, Consumed.with(Serdes.String(), JsonSerdes.serde(Node.class)))
+            .mapValues(NodeSnapshot::new);
     }
 
     private KTable<String, NodeTypes> nodeNodeTypes() {

@@ -9,7 +9,8 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-class JsonDeserializer<T> implements Deserializer<T> {
+// TODO: IntelliJ has a problem when class is not public. Why?
+public class JsonDeserializer<T> implements Deserializer<T> {
 
     private final Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
 

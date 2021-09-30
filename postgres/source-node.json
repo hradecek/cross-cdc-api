@@ -13,7 +13,7 @@
   "column.exclude.list": "public.node.optlck",
   "transforms": "unwrap,extractPK",
   "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
-  "transforms.unwrap.add.fields": "op",
+  "transforms.unwrap.add.fields": "op,source.ts_ms",
   "transforms.unwrap.delete.handling.mode": "rewrite",
   "transforms.extractPK.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
   "transforms.extractPK.field": "node_id",
