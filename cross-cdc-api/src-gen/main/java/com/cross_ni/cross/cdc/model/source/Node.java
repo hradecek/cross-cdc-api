@@ -11,6 +11,9 @@ public class Node {
     @SerializedName("__op")
     @Expose
     private String op;
+    @SerializedName("__source_ts_ms")
+    @Expose
+    private Double sourceTsMs;
     @SerializedName("node_id")
     @Expose
     private String nodeId;
@@ -48,6 +51,14 @@ public class Node {
 
     public void setOp(String op) {
         this.op = op;
+    }
+
+    public Double getSourceTsMs() {
+        return sourceTsMs;
+    }
+
+    public void setSourceTsMs(Double sourceTsMs) {
+        this.sourceTsMs = sourceTsMs;
     }
 
     public String getNodeId() {
@@ -138,6 +149,10 @@ public class Node {
         sb.append('=');
         sb.append(((this.op == null)?"<null>":this.op));
         sb.append(',');
+        sb.append("sourceTsMs");
+        sb.append('=');
+        sb.append(((this.sourceTsMs == null)?"<null>":this.sourceTsMs));
+        sb.append(',');
         sb.append("nodeId");
         sb.append('=');
         sb.append(((this.nodeId == null)?"<null>":this.nodeId));
@@ -189,17 +204,18 @@ public class Node {
     @Override
     public int hashCode() {
         int result = 1;
+        result = ((result* 31)+((this.sourceTsMs == null)? 0 :this.sourceTsMs.hashCode()));
         result = ((result* 31)+((this.capacityFull == null)? 0 :this.capacityFull.hashCode()));
         result = ((result* 31)+((this.nodeName == null)? 0 :this.nodeName.hashCode()));
         result = ((result* 31)+((this.op == null)? 0 :this.op.hashCode()));
         result = ((result* 31)+((this.nodeGeomId == null)? 0 :this.nodeGeomId.hashCode()));
         result = ((result* 31)+((this.description == null)? 0 :this.description.hashCode()));
-        result = ((result* 31)+((this.inheritGeometry == null)? 0 :this.inheritGeometry.hashCode()));
         result = ((result* 31)+((this.materialId == null)? 0 :this.materialId.hashCode()));
-        result = ((result* 31)+((this.nodeId == null)? 0 :this.nodeId.hashCode()));
         result = ((result* 31)+((this.nodeStatusId == null)? 0 :this.nodeStatusId.hashCode()));
         result = ((result* 31)+((this.capacityFree == null)? 0 :this.capacityFree.hashCode()));
         result = ((result* 31)+((this.caSetId == null)? 0 :this.caSetId.hashCode()));
+        result = ((result* 31)+((this.inheritGeometry == null)? 0 :this.inheritGeometry.hashCode()));
+        result = ((result* 31)+((this.nodeId == null)? 0 :this.nodeId.hashCode()));
         return result;
     }
 
@@ -212,7 +228,7 @@ public class Node {
             return false;
         }
         Node rhs = ((Node) other);
-        return ((((((((((((this.capacityFull == rhs.capacityFull)||((this.capacityFull!= null)&&this.capacityFull.equals(rhs.capacityFull)))&&((this.nodeName == rhs.nodeName)||((this.nodeName!= null)&&this.nodeName.equals(rhs.nodeName))))&&((this.op == rhs.op)||((this.op!= null)&&this.op.equals(rhs.op))))&&((this.nodeGeomId == rhs.nodeGeomId)||((this.nodeGeomId!= null)&&this.nodeGeomId.equals(rhs.nodeGeomId))))&&((this.description == rhs.description)||((this.description!= null)&&this.description.equals(rhs.description))))&&((this.inheritGeometry == rhs.inheritGeometry)||((this.inheritGeometry!= null)&&this.inheritGeometry.equals(rhs.inheritGeometry))))&&((this.materialId == rhs.materialId)||((this.materialId!= null)&&this.materialId.equals(rhs.materialId))))&&((this.nodeId == rhs.nodeId)||((this.nodeId!= null)&&this.nodeId.equals(rhs.nodeId))))&&((this.nodeStatusId == rhs.nodeStatusId)||((this.nodeStatusId!= null)&&this.nodeStatusId.equals(rhs.nodeStatusId))))&&((this.capacityFree == rhs.capacityFree)||((this.capacityFree!= null)&&this.capacityFree.equals(rhs.capacityFree))))&&((this.caSetId == rhs.caSetId)||((this.caSetId!= null)&&this.caSetId.equals(rhs.caSetId))));
+        return (((((((((((((this.sourceTsMs == rhs.sourceTsMs)||((this.sourceTsMs!= null)&&this.sourceTsMs.equals(rhs.sourceTsMs)))&&((this.capacityFull == rhs.capacityFull)||((this.capacityFull!= null)&&this.capacityFull.equals(rhs.capacityFull))))&&((this.nodeName == rhs.nodeName)||((this.nodeName!= null)&&this.nodeName.equals(rhs.nodeName))))&&((this.op == rhs.op)||((this.op!= null)&&this.op.equals(rhs.op))))&&((this.nodeGeomId == rhs.nodeGeomId)||((this.nodeGeomId!= null)&&this.nodeGeomId.equals(rhs.nodeGeomId))))&&((this.description == rhs.description)||((this.description!= null)&&this.description.equals(rhs.description))))&&((this.materialId == rhs.materialId)||((this.materialId!= null)&&this.materialId.equals(rhs.materialId))))&&((this.nodeStatusId == rhs.nodeStatusId)||((this.nodeStatusId!= null)&&this.nodeStatusId.equals(rhs.nodeStatusId))))&&((this.capacityFree == rhs.capacityFree)||((this.capacityFree!= null)&&this.capacityFree.equals(rhs.capacityFree))))&&((this.caSetId == rhs.caSetId)||((this.caSetId!= null)&&this.caSetId.equals(rhs.caSetId))))&&((this.inheritGeometry == rhs.inheritGeometry)||((this.inheritGeometry!= null)&&this.inheritGeometry.equals(rhs.inheritGeometry))))&&((this.nodeId == rhs.nodeId)||((this.nodeId!= null)&&this.nodeId.equals(rhs.nodeId))));
     }
 
 }

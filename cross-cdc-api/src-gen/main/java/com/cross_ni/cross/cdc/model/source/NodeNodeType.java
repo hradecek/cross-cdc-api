@@ -11,6 +11,9 @@ public class NodeNodeType {
     @SerializedName("__op")
     @Expose
     private String op;
+    @SerializedName("__source_ts_ms")
+    @Expose
+    private Double sourceTsMs;
     @SerializedName("node_id")
     @Expose
     private String nodeId;
@@ -24,6 +27,14 @@ public class NodeNodeType {
 
     public void setOp(String op) {
         this.op = op;
+    }
+
+    public Double getSourceTsMs() {
+        return sourceTsMs;
+    }
+
+    public void setSourceTsMs(Double sourceTsMs) {
+        this.sourceTsMs = sourceTsMs;
     }
 
     public String getNodeId() {
@@ -50,6 +61,10 @@ public class NodeNodeType {
         sb.append('=');
         sb.append(((this.op == null)?"<null>":this.op));
         sb.append(',');
+        sb.append("sourceTsMs");
+        sb.append('=');
+        sb.append(((this.sourceTsMs == null)?"<null>":this.sourceTsMs));
+        sb.append(',');
         sb.append("nodeId");
         sb.append('=');
         sb.append(((this.nodeId == null)?"<null>":this.nodeId));
@@ -69,6 +84,7 @@ public class NodeNodeType {
     @Override
     public int hashCode() {
         int result = 1;
+        result = ((result* 31)+((this.sourceTsMs == null)? 0 :this.sourceTsMs.hashCode()));
         result = ((result* 31)+((this.op == null)? 0 :this.op.hashCode()));
         result = ((result* 31)+((this.nodeId == null)? 0 :this.nodeId.hashCode()));
         result = ((result* 31)+((this.discriminator == null)? 0 :this.discriminator.hashCode()));
@@ -84,7 +100,7 @@ public class NodeNodeType {
             return false;
         }
         NodeNodeType rhs = ((NodeNodeType) other);
-        return ((((this.op == rhs.op)||((this.op!= null)&&this.op.equals(rhs.op)))&&((this.nodeId == rhs.nodeId)||((this.nodeId!= null)&&this.nodeId.equals(rhs.nodeId))))&&((this.discriminator == rhs.discriminator)||((this.discriminator!= null)&&this.discriminator.equals(rhs.discriminator))));
+        return (((((this.sourceTsMs == rhs.sourceTsMs)||((this.sourceTsMs!= null)&&this.sourceTsMs.equals(rhs.sourceTsMs)))&&((this.op == rhs.op)||((this.op!= null)&&this.op.equals(rhs.op))))&&((this.nodeId == rhs.nodeId)||((this.nodeId!= null)&&this.nodeId.equals(rhs.nodeId))))&&((this.discriminator == rhs.discriminator)||((this.discriminator!= null)&&this.discriminator.equals(rhs.discriminator))));
     }
 
 }

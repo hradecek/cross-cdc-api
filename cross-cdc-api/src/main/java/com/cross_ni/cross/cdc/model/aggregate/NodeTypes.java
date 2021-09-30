@@ -14,6 +14,7 @@ public class NodeTypes {
 
     private String operation;
     private String nodeId;
+    private double sourceTsMs = 0.0;
 
     public NodeTypes aggregate(String nodeId, NodeNodeType sourceNodeNodeType) {
         if (sourceNodeNodeType.getOp().equals("d")) {
@@ -26,6 +27,8 @@ public class NodeTypes {
         } else {
             operation = "u";
         }
+        sourceTsMs = Math.max(sourceTsMs, sourceNodeNodeType.getSourceTsMs());
+
         this.nodeId = nodeId;
 
         return this;

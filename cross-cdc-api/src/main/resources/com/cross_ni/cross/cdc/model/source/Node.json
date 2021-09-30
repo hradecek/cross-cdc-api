@@ -5,6 +5,9 @@
     "__op": {
       "type": "string"
     },
+    "__source_ts_ms": {
+      "type": "number"
+    },
     "node_id": {
       "type": "string"
     },
