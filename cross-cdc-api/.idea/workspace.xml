@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeCdcSinkValueJoinerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeCdcSinkValueJoinerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definitions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../output" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node-types.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-node.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/register-connectors.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/register-connectors.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/reset-application.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/reset-application.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +140,7 @@
       <workItem from="1632895973621" duration="18366000" />
       <workItem from="1632939500186" duration="4623000" />
       <workItem from="1632983815679" duration="9289000" />
+      <workItem from="1633000222994" duration="4162000" />
     </task>
     <servers />
   </component>
