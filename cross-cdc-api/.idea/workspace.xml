@@ -6,15 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/CustomAttribute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/Node.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/Node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/NodeNodeType.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/NodeNodeType.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-node.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node.json" afterDir="false" />
     </list>
@@ -71,6 +66,7 @@
       <recent name="$PROJECT_DIR$/src/main/avro" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cross_ni.cross.cdc.model.aggregate" />
       <recent name="com.cross_ni.cross.cdc.topology" />
     </key>
   </component>
@@ -148,7 +144,8 @@
       <workItem from="1632939500186" duration="4623000" />
       <workItem from="1632983815679" duration="9289000" />
       <workItem from="1633000222994" duration="6260000" />
-      <workItem from="1633007009721" duration="829000" />
+      <workItem from="1633007009721" duration="1089000" />
+      <workItem from="1633008599497" duration="2002000" />
     </task>
     <servers />
   </component>

@@ -22,7 +22,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "inherit_geometry",
     "capacity_full",
     "capacity_free",
-    "nodeTypes"
+    "nodeTypes",
+    "externalIds"
 })
 @Generated("jsonschema2pojo")
 public class Node {
@@ -45,6 +46,8 @@ public class Node {
     private Double capacityFree;
     @JsonProperty("nodeTypes")
     private List<String> nodeTypes = new ArrayList<String>();
+    @JsonProperty("externalIds")
+    private List<ExternalId> externalIds = new ArrayList<ExternalId>();
 
     @JsonProperty("operation")
     public String getOperation() {
@@ -136,6 +139,16 @@ public class Node {
         this.nodeTypes = nodeTypes;
     }
 
+    @JsonProperty("externalIds")
+    public List<ExternalId> getExternalIds() {
+        return externalIds;
+    }
+
+    @JsonProperty("externalIds")
+    public void setExternalIds(List<ExternalId> externalIds) {
+        this.externalIds = externalIds;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -176,6 +189,10 @@ public class Node {
         sb.append('=');
         sb.append(((this.nodeTypes == null)?"<null>":this.nodeTypes));
         sb.append(',');
+        sb.append("externalIds");
+        sb.append('=');
+        sb.append(((this.externalIds == null)?"<null>":this.externalIds));
+        sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
@@ -190,6 +207,7 @@ public class Node {
         result = ((result* 31)+((this.capacityFull == null)? 0 :this.capacityFull.hashCode()));
         result = ((result* 31)+((this.attributeType == null)? 0 :this.attributeType.hashCode()));
         result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
+        result = ((result* 31)+((this.externalIds == null)? 0 :this.externalIds.hashCode()));
         result = ((result* 31)+((this.description == null)? 0 :this.description.hashCode()));
         result = ((result* 31)+((this.inheritGeometry == null)? 0 :this.inheritGeometry.hashCode()));
         result = ((result* 31)+((this.nodeTypes == null)? 0 :this.nodeTypes.hashCode()));
@@ -208,7 +226,7 @@ public class Node {
             return false;
         }
         Node rhs = ((Node) other);
-        return ((((((((((this.capacityFull == rhs.capacityFull)||((this.capacityFull!= null)&&this.capacityFull.equals(rhs.capacityFull)))&&((this.attributeType == rhs.attributeType)||((this.attributeType!= null)&&this.attributeType.equals(rhs.attributeType))))&&((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name))))&&((this.description == rhs.description)||((this.description!= null)&&this.description.equals(rhs.description))))&&((this.inheritGeometry == rhs.inheritGeometry)||((this.inheritGeometry!= null)&&this.inheritGeometry.equals(rhs.inheritGeometry))))&&((this.nodeTypes == rhs.nodeTypes)||((this.nodeTypes!= null)&&this.nodeTypes.equals(rhs.nodeTypes))))&&((this.operation == rhs.operation)||((this.operation!= null)&&this.operation.equals(rhs.operation))))&&((this.nodeId == rhs.nodeId)||((this.nodeId!= null)&&this.nodeId.equals(rhs.nodeId))))&&((this.capacityFree == rhs.capacityFree)||((this.capacityFree!= null)&&this.capacityFree.equals(rhs.capacityFree))));
+        return (((((((((((this.capacityFull == rhs.capacityFull)||((this.capacityFull!= null)&&this.capacityFull.equals(rhs.capacityFull)))&&((this.attributeType == rhs.attributeType)||((this.attributeType!= null)&&this.attributeType.equals(rhs.attributeType))))&&((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name))))&&((this.externalIds == rhs.externalIds)||((this.externalIds!= null)&&this.externalIds.equals(rhs.externalIds))))&&((this.description == rhs.description)||((this.description!= null)&&this.description.equals(rhs.description))))&&((this.inheritGeometry == rhs.inheritGeometry)||((this.inheritGeometry!= null)&&this.inheritGeometry.equals(rhs.inheritGeometry))))&&((this.nodeTypes == rhs.nodeTypes)||((this.nodeTypes!= null)&&this.nodeTypes.equals(rhs.nodeTypes))))&&((this.operation == rhs.operation)||((this.operation!= null)&&this.operation.equals(rhs.operation))))&&((this.nodeId == rhs.nodeId)||((this.nodeId!= null)&&this.nodeId.equals(rhs.nodeId))))&&((this.capacityFree == rhs.capacityFree)||((this.capacityFree!= null)&&this.capacityFree.equals(rhs.capacityFree))));
     }
 
     @Generated("jsonschema2pojo")

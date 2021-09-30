@@ -31,6 +31,12 @@
       "items": {
         "type": "string"
       }
+    },
+    "externalIds": {
+      "type": "array",
+      "items": {
+        "$ref": "ExternalId.json"
+      }
     }
   }
 }

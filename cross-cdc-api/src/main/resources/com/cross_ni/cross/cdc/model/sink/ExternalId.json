@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "type": "string"
+    },
+    "external_id": {
+      "type": "string"
+    },
+    "system_id": {
+      "type": "string"
+    }
+  }
+}

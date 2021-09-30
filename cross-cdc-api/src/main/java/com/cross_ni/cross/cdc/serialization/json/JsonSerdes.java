@@ -1,6 +1,8 @@
 package com.cross_ni.cross.cdc.serialization.json;
 
+import com.cross_ni.cross.cdc.model.aggregate.ExternalIds;
 import com.cross_ni.cross.cdc.model.aggregate.NodeTypes;
+import com.cross_ni.cross.cdc.model.source.ExternalId;
 import com.cross_ni.cross.cdc.model.source.Node;
 import com.cross_ni.cross.cdc.model.source.NodeNodeType;
 import com.cross_ni.cross.cdc.model.source.NodeType;
@@ -23,8 +25,10 @@ public class JsonSerdes {
         SOURCE_MODELS.add(Node.class);
         SOURCE_MODELS.add(NodeType.class);
         SOURCE_MODELS.add(NodeNodeType.class);
-        SOURCE_MODELS.add(NodeTypes.class);
+        SOURCE_MODELS.add(ExternalId.class);
 
+        SOURCE_MODELS.add(NodeTypes.class);
+        SOURCE_MODELS.add(ExternalIds.class);
 
         SINK_MODELS.add(com.cross_ni.cross.cdc.model.sink.Node.class);
 

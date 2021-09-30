@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "__op": {
+      "type": "string"
+    },
+    "__source_ts_ms": {
+      "type": "number"
+    },
+    "entity": {
+      "type": "string"
+    },
+    "external_id": {
+      "type": "string"
+    },
+    "system_id": {
+      "type": "string"
+    },
+    "internal_id": {
+      "type": "string"
+    }
+  }
+}
