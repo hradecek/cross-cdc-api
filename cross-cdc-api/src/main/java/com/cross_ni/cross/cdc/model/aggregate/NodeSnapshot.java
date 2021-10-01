@@ -35,19 +35,10 @@ public class NodeSnapshot {
         this.node = node;
     }
 
-    public static NodeSnapshot valueJoiner(NodeSnapshot nodeSnapshot, CustomAttributes customAttributes) {
-        return nodeSnapshot.aggregatedCustomAttributes(customAttributes);
-    }
-
-    public static NodeSnapshot valueJoiner(NodeSnapshot nodeSnapshot, NodeTypes nodeTypes) {
-        return nodeSnapshot.aggregatedNodeTypes(nodeTypes);
-    }
-
-    public static NodeSnapshot valueJoiner(NodeSnapshot nodeSnapshot, ExternalIds externalIds) {
-        return nodeSnapshot.aggregatedExternalIds(externalIds);
-    }
-
-    public NodeSnapshot aggregatedCustomAttributes(CustomAttributes sourceCustomAttributes) {
+    public NodeSnapshot join(CustomAttributes sourceCustomAttributes) {
+        if (sourceCustomAttributes == null) {
+            return this;
+        }
         if (operation.equals("r") && sourceCustomAttributes.getOperation().equals("r")) {
             operation = "r";
             customAttributes = sourceCustomAttributes.getCustomAttributes();
@@ -55,13 +46,12 @@ public class NodeSnapshot {
             if (node.getSourceTsMs() < sourceCustomAttributes.getSourceTsMs()) {
                 customAttributes = sourceCustomAttributes.getCustomAttributes();
                 operation = sourceCustomAttributes.getOperation();
-
             }
         }
         return this;
     }
 
-    public NodeSnapshot aggregatedNodeTypes(NodeTypes sourceNodeTypes) {
+    public NodeSnapshot join(NodeTypes sourceNodeTypes) {
         if (operation.equals("r") && sourceNodeTypes.getOperation().equals("r")) {
             operation = "r";
             discriminators = sourceNodeTypes.getDiscriminators();
@@ -74,7 +64,7 @@ public class NodeSnapshot {
         return this;
     }
 
-    public NodeSnapshot aggregatedExternalIds(ExternalIds externalIds) {
+    public NodeSnapshot join(ExternalIds externalIds) {
         if (operation.equals("r") && externalIds.getOperation().equals("r")) {
             operation = "r";
             this.externalIds = externalIds.getExternalIds();

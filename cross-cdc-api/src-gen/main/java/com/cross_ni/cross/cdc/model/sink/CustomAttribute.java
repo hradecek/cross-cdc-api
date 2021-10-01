@@ -8,13 +8,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "value"
+    "value",
+    "definition"
 })
 @Generated("jsonschema2pojo")
 public class CustomAttribute {
 
     @JsonProperty("value")
     private Object value;
+    @JsonProperty("definition")
+    private CustomAttributeDefinition definition;
 
     @JsonProperty("value")
     public Object getValue() {
@@ -26,6 +29,16 @@ public class CustomAttribute {
         this.value = value;
     }
 
+    @JsonProperty("definition")
+    public CustomAttributeDefinition getDefinition() {
+        return definition;
+    }
+
+    @JsonProperty("definition")
+    public void setDefinition(CustomAttributeDefinition definition) {
+        this.definition = definition;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -33,6 +46,10 @@ public class CustomAttribute {
         sb.append("value");
         sb.append('=');
         sb.append(((this.value == null)?"<null>":this.value));
+        sb.append(',');
+        sb.append("definition");
+        sb.append('=');
+        sb.append(((this.definition == null)?"<null>":this.definition));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -46,6 +63,7 @@ public class CustomAttribute {
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.value == null)? 0 :this.value.hashCode()));
+        result = ((result* 31)+((this.definition == null)? 0 :this.definition.hashCode()));
         return result;
     }
 
@@ -58,7 +76,7 @@ public class CustomAttribute {
             return false;
         }
         CustomAttribute rhs = ((CustomAttribute) other);
-        return ((this.value == rhs.value)||((this.value!= null)&&this.value.equals(rhs.value)));
+        return (((this.value == rhs.value)||((this.value!= null)&&this.value.equals(rhs.value)))&&((this.definition == rhs.definition)||((this.definition!= null)&&this.definition.equals(rhs.definition))));
     }
 
 }

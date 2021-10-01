@@ -4,6 +4,7 @@ import com.cross_ni.cross.cdc.model.aggregate.CustomAttributes;
 import com.cross_ni.cross.cdc.model.aggregate.ExternalIds;
 import com.cross_ni.cross.cdc.model.aggregate.NodeSnapshot;
 import com.cross_ni.cross.cdc.model.aggregate.NodeTypes;
+import com.cross_ni.cross.cdc.model.source.CaDefinition;
 import com.cross_ni.cross.cdc.model.source.CustomAttribute;
 import com.cross_ni.cross.cdc.model.source.ExternalId;
 import com.cross_ni.cross.cdc.model.source.Node;
@@ -15,6 +16,7 @@ import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
+import org.apache.kafka.streams.kstream.GlobalKTable;
 import org.apache.kafka.streams.kstream.Grouped;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Materialized;
@@ -25,22 +27,20 @@ class NodeTopologyBuilder {
 
     private static final String TOPIC_NAME_SINK_NODE = "cross.cdc.node";
 
+    private static final String TOPIC_NAME_SOURCE_CA_DEF = "crossdb.public.ca_def";
     private static final String TOPIC_NAME_SOURCE_CA_VAL = "crossdb.public.ca_val";
+    private static final String TOPIC_NAME_SOURCE_EXTERNAL_ID = "crossdb.public.external_id";
     private static final String TOPIC_NAME_SOURCE_NODE = "crossdb.public.node";
     private static final String TOPIC_NAME_SOURCE_NODE_NODE_TYPE = "crossdb.public.node_node_type";
-    private static final String TOPIC_NAME_SOURCE_EXTERNAL_ID = "crossdb.public.external_id";
 
     private final StreamsBuilder builder = new StreamsBuilder();
 
     public Topology build() {
-        repartitionByCaSetId(nodes())
+        final GlobalKTable<String, CaDefinition> caDefinitions = caDefinitions();
+        repartitionByCaSetId(nodes().join(nodeNodeTypes(), NodeSnapshot::join).join(externalIds(), NodeSnapshot::join))
+            .leftJoin(customAttributes(caDefinitions), NodeSnapshot::join)
             .toStream()
-//            .join(customAttributes(), NodeSnapshot::valueJoiner)
-            .foreach((k, v) -> System.out.println(k + " " + v));
-//            .join(nodeNodeTypes(), NodeSnapshot::valueJoiner)
-//            .join(externalIds(), NodeSnapshot::valueJoiner)
-//            .toStream()
-//            .to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)));
+            .to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)));
 
         return builder.build();
     }
@@ -55,7 +55,7 @@ class NodeTopologyBuilder {
         return
             builder
             .stream(TOPIC_NAME_SOURCE_NODE_NODE_TYPE, Consumed.with(Serdes.String(), JsonSerdes.serde(NodeNodeType.class)))
-            .groupBy((k, v) -> k, Grouped.with(Serdes.String(), JsonSerdes.serde(NodeNodeType.class)))
+            .groupByKey()
             .aggregate(NodeTypes::new, NodeTypes::aggregator, Materialized.with(Serdes.String(), JsonSerdes.serde(NodeTypes.class)));
     }
 
@@ -69,10 +69,11 @@ class NodeTopologyBuilder {
             .aggregate(ExternalIds::new, ExternalIds::aggregator, Materialized.with(Serdes.String(), JsonSerdes.serde(ExternalIds.class)));
     }
 
-    private KTable<String, CustomAttributes> customAttributes() {
+    private KTable<String, CustomAttributes> customAttributes(GlobalKTable<String, CaDefinition> caDefinitions) {
         return
             builder
                 .stream(TOPIC_NAME_SOURCE_CA_VAL, Consumed.with(Serdes.String(), JsonSerdes.serde(CustomAttribute.class)))
+                .join(caDefinitions, (caSetId, customAttribute) -> customAttribute.getCaDefId(), CustomAttribute::join)
                 .groupByKey()
                 .aggregate(CustomAttributes::new, CustomAttributes::aggregator, Materialized.with(Serdes.String(), JsonSerdes.serde(CustomAttributes.class)));
     }
@@ -83,17 +84,8 @@ class NodeTopologyBuilder {
             .groupBy((nodeId, node) -> KeyValue.pair(node.getCaSetId(), node), Grouped.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)))
             .aggregate(() -> null, (key, n, aggregate) -> n, (key, n, aggregate) -> null, Materialized.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)));
     }
-//    private static <KO, KN, V> KTable<KN, V> repartition(KTable<KO, V> tableToRepartition) {
-//        final KTable<String, User> usersKeyedByApplicationIDKTable = usersKTable.groupBy(
-//            // First, going to set the new key to the user's application id
-//            (userId, user) -> KeyValue.pair(user.getApplicationID().toString(), user)
-//        ).aggregate(
-//            // Initiate the aggregate value
-//            () -> null,
-//            // adder (doing nothing, just passing the user through as the value)
-//            (applicationId, user, aggValue) -> user,
-//            // subtractor (doing nothing, just passing the user through as the value)
-//            (applicationId, user, aggValue) -> user
-//        );
-//    }
+
+    private GlobalKTable<String, CaDefinition> caDefinitions() {
+        return builder.globalTable(TOPIC_NAME_SOURCE_CA_DEF, Consumed.with(Serdes.String(), JsonSerdes.serde(CaDefinition.class)));
+    }
 }

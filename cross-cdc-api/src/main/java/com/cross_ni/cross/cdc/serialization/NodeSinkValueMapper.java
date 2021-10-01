@@ -1,11 +1,14 @@
 package com.cross_ni.cross.cdc.serialization;
 
+import com.cross_ni.cross.cdc.model.aggregate.NodeSnapshot;
 import com.cross_ni.cross.cdc.model.aggregate.NodeTypes;
 import com.cross_ni.cross.cdc.model.sink.Node;
 
+import org.apache.kafka.streams.kstream.ValueMapper;
+
 import java.util.ArrayList;
 
-public class NodeCdcSinkValueJoinerFacade {
+public class NodeSinkValueMapper implements ValueMapper<com.cross_ni.cross.cdc.model.aggregate.NodeSnapshot, Node> {
 
     public static Node nodeMapper(com.cross_ni.cross.cdc.model.source.Node sourceNode) {
         final Node sinkNode = new Node();
@@ -26,5 +29,10 @@ public class NodeCdcSinkValueJoinerFacade {
         node.setOperation(nodeTypes.getOperation());
         node.setNodeTypes(new ArrayList<>(nodeTypes.getDiscriminators()));
         return node;
+    }
+
+    @Override
+    public Node apply(NodeSnapshot nodeSnapshot) {
+        return null;
     }
 }

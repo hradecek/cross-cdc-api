@@ -4,6 +4,7 @@ import com.cross_ni.cross.cdc.model.aggregate.CustomAttributes;
 import com.cross_ni.cross.cdc.model.aggregate.ExternalIds;
 import com.cross_ni.cross.cdc.model.aggregate.NodeSnapshot;
 import com.cross_ni.cross.cdc.model.aggregate.NodeTypes;
+import com.cross_ni.cross.cdc.model.source.CaDefinition;
 import com.cross_ni.cross.cdc.model.source.CustomAttribute;
 import com.cross_ni.cross.cdc.model.source.ExternalId;
 import com.cross_ni.cross.cdc.model.source.Node;
@@ -29,6 +30,7 @@ public class JsonSerdes {
         SOURCE_MODELS.add(NodeType.class);
         SOURCE_MODELS.add(NodeNodeType.class);
         SOURCE_MODELS.add(ExternalId.class);
+        SOURCE_MODELS.add(CaDefinition.class);
         SOURCE_MODELS.add(CustomAttribute.class);
 
         SOURCE_MODELS.add(NodeTypes.class);

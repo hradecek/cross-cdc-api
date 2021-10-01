@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("jsonschema2pojo")
-public class CustomAttribute {
+public class CustomAttributeJson {
 
     @SerializedName("__op")
     @Expose
@@ -14,9 +14,6 @@ public class CustomAttribute {
     @SerializedName("__source_ts_ms")
     @Expose
     private Double sourceTsMs;
-    @SerializedName("value")
-    @Expose
-    private Object value;
 
     public String getOp() {
         return op;
@@ -34,18 +31,10 @@ public class CustomAttribute {
         this.sourceTsMs = sourceTsMs;
     }
 
-    public Object getValue() {
-        return value;
-    }
-
-    public void setValue(Object value) {
-        this.value = value;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(CustomAttribute.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(CustomAttributeJson.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("op");
         sb.append('=');
         sb.append(((this.op == null)?"<null>":this.op));
@@ -53,10 +42,6 @@ public class CustomAttribute {
         sb.append("sourceTsMs");
         sb.append('=');
         sb.append(((this.sourceTsMs == null)?"<null>":this.sourceTsMs));
-        sb.append(',');
-        sb.append("value");
-        sb.append('=');
-        sb.append(((this.value == null)?"<null>":this.value));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -71,7 +56,6 @@ public class CustomAttribute {
         int result = 1;
         result = ((result* 31)+((this.sourceTsMs == null)? 0 :this.sourceTsMs.hashCode()));
         result = ((result* 31)+((this.op == null)? 0 :this.op.hashCode()));
-        result = ((result* 31)+((this.value == null)? 0 :this.value.hashCode()));
         return result;
     }
 
@@ -80,11 +64,11 @@ public class CustomAttribute {
         if (other == this) {
             return true;
         }
-        if ((other instanceof CustomAttribute) == false) {
+        if ((other instanceof CustomAttributeJson) == false) {
             return false;
         }
-        CustomAttribute rhs = ((CustomAttribute) other);
-        return ((((this.sourceTsMs == rhs.sourceTsMs)||((this.sourceTsMs!= null)&&this.sourceTsMs.equals(rhs.sourceTsMs)))&&((this.op == rhs.op)||((this.op!= null)&&this.op.equals(rhs.op))))&&((this.value == rhs.value)||((this.value!= null)&&this.value.equals(rhs.value))));
+        CustomAttributeJson rhs = ((CustomAttributeJson) other);
+        return (((this.sourceTsMs == rhs.sourceTsMs)||((this.sourceTsMs!= null)&&this.sourceTsMs.equals(rhs.sourceTsMs)))&&((this.op == rhs.op)||((this.op!= null)&&this.op.equals(rhs.op))));
     }
 
 }

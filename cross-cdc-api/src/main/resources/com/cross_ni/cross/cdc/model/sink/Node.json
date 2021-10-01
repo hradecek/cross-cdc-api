@@ -5,20 +5,8 @@
     "operation": {
       "type": "string"
     },
-    "attribute_type": {
-      "$ref": "AttributeType.json#/definitions/attribute_type"
-    },
     "node_id": {
       "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "inherit_geometry": {
-      "type": "boolean"
     },
     "capacity_full": {
       "type": "number"
@@ -26,16 +14,32 @@
     "capacity_free": {
       "type": "number"
     },
-    "nodeTypes": {
+    "description": {
+      "type": "string"
+    },
+    "inherit_geometry": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "aliases": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": "string"
     },
     "externalIds": {
       "type": "array",
       "items": {
         "$ref": "ExternalId.json"
+      }
+    },
+    "nodeTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     }
   }

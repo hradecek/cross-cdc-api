@@ -7,6 +7,9 @@
         { "type": "string" },
         { "type": "integer" }
       ]
+    },
+    "definition": {
+      "$ref": "CustomAttributeDefinition.json"
     }
   }
 }
