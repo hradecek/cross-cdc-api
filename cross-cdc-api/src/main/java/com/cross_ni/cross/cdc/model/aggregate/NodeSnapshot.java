@@ -1,5 +1,6 @@
 package com.cross_ni.cross.cdc.model.aggregate;
 
+import com.cross_ni.cross.cdc.model.source.CustomAttribute;
 import com.cross_ni.cross.cdc.model.source.ExternalId;
 import com.cross_ni.cross.cdc.model.source.Node;
 
@@ -15,6 +16,7 @@ public class NodeSnapshot {
     private final Node node;
     private Set<String> discriminators;
     private Set<ExternalId> externalIds = new HashSet<>();
+    private Set<CustomAttribute> customAttributes;
 
     @Getter
     private String operation;
@@ -22,12 +24,19 @@ public class NodeSnapshot {
     private String nodeId;
     @Getter
     private double sourceTsMs;
+    @Getter
+    private String caSetId;
 
     public NodeSnapshot(Node node) {
         this.operation = node.getOp();
         this.nodeId = node.getNodeId();
         this.sourceTsMs = node.getSourceTsMs();
+        this.caSetId = node.getCaSetId();
         this.node = node;
+    }
+
+    public static NodeSnapshot valueJoiner(NodeSnapshot nodeSnapshot, CustomAttributes customAttributes) {
+        return nodeSnapshot.aggregatedCustomAttributes(customAttributes);
     }
 
     public static NodeSnapshot valueJoiner(NodeSnapshot nodeSnapshot, NodeTypes nodeTypes) {
@@ -36,6 +45,20 @@ public class NodeSnapshot {
 
     public static NodeSnapshot valueJoiner(NodeSnapshot nodeSnapshot, ExternalIds externalIds) {
         return nodeSnapshot.aggregatedExternalIds(externalIds);
+    }
+
+    public NodeSnapshot aggregatedCustomAttributes(CustomAttributes sourceCustomAttributes) {
+        if (operation.equals("r") && sourceCustomAttributes.getOperation().equals("r")) {
+            operation = "r";
+            customAttributes = sourceCustomAttributes.getCustomAttributes();
+        } else {
+            if (node.getSourceTsMs() < sourceCustomAttributes.getSourceTsMs()) {
+                customAttributes = sourceCustomAttributes.getCustomAttributes();
+                operation = sourceCustomAttributes.getOperation();
+
+            }
+        }
+        return this;
     }
 
     public NodeSnapshot aggregatedNodeTypes(NodeTypes sourceNodeTypes) {
