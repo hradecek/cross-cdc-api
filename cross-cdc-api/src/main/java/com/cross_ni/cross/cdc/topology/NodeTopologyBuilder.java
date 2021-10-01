@@ -9,6 +9,7 @@ import com.cross_ni.cross.cdc.model.source.CustomAttribute;
 import com.cross_ni.cross.cdc.model.source.ExternalId;
 import com.cross_ni.cross.cdc.model.source.Node;
 import com.cross_ni.cross.cdc.model.source.NodeNodeType;
+import com.cross_ni.cross.cdc.serialization.NodeSinkValueMapper;
 import com.cross_ni.cross.cdc.serialization.json.JsonSerdes;
 
 import org.apache.kafka.common.serialization.Serdes;
@@ -34,13 +35,22 @@ class NodeTopologyBuilder {
     private static final String TOPIC_NAME_SOURCE_NODE_NODE_TYPE = "crossdb.public.node_node_type";
 
     private final StreamsBuilder builder = new StreamsBuilder();
+    private final NodeSinkValueMapper nodeSinkValueMapper = new NodeSinkValueMapper();
 
     public Topology build() {
         final GlobalKTable<String, CaDefinition> caDefinitions = caDefinitions();
-        repartitionByCaSetId(nodes().join(nodeNodeTypes(), NodeSnapshot::join).join(externalIds(), NodeSnapshot::join))
+        final KTable<String, NodeSnapshot> nodes = nodes();
+        final KTable<String, NodeTypes> nodeTypes = nodeNodeTypes();
+        final KTable<String, ExternalIds> externalIds = externalIds();
+
+        final KTable<String, NodeSnapshot> nodesJoint = nodes.join(nodeTypes, NodeSnapshot::join).join(externalIds, NodeSnapshot::join);
+        repartitionByCaSetId(nodesJoint)
             .leftJoin(customAttributes(caDefinitions), NodeSnapshot::join)
             .toStream()
+//                .foreach((k, v) -> System.out.println(k + " " + v));
             .to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)));
+//            .mapValues(nodeSinkValueMapper)
+//            .to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(com.cross_ni.cross.cdc.model.sink.Node.class)));
 
         return builder.build();
     }
@@ -78,11 +88,16 @@ class NodeTopologyBuilder {
                 .aggregate(CustomAttributes::new, CustomAttributes::aggregator, Materialized.with(Serdes.String(), JsonSerdes.serde(CustomAttributes.class)));
     }
 
+    // It's important that CA Set ID in the stream - otherwise non-deterministic behaviour
     private KTable<String, NodeSnapshot> repartitionByCaSetId(KTable<String, NodeSnapshot> nodes) {
         return
             nodes
-            .groupBy((nodeId, node) -> KeyValue.pair(node.getCaSetId(), node), Grouped.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)))
-            .aggregate(() -> null, (key, n, aggregate) -> n, (key, n, aggregate) -> null, Materialized.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)));
+                .toStream()
+                .selectKey((nodeId, node) -> node.getCaSetId())
+//                .re
+                .toTable(Materialized.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)));
+//            .groupBy((nodeId, node) -> KeyValue.pair(node.getCaSetId(), node), Grouped.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)))
+//            .aggregate(() -> null, (key, n, aggregate) -> n, (key, n, aggregate) -> null, Materialized.with(Serdes.String(), JsonSerdes.serde(NodeSnapshot.class)));
     }
 
     private GlobalKTable<String, CaDefinition> caDefinitions() {

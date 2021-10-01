@@ -5,28 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/CustomAttribute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/ExternalId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/CustomAttribute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/ExternalId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/CustomAttributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/CustomAttributes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeSnapshot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeCdcSinkValueJoinerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CustomAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CustomAttribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/CustomAttribute.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/CustomAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/CustomAttribute.json.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definitions.json.stop" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-external-id.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-external-id.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/NodeType.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -211,11 +198,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/apache/avro/avro/1.10.2/avro-1.10.2.jar!/org/apache/avro/Schema.class</url>
           <line>489</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeSnapshot.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

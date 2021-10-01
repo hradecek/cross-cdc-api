@@ -1,5 +1,6 @@
 package com.cross_ni.cross.cdc.model.aggregate;
 
+import com.cross_ni.cross.cdc.model.source.Attribute;
 import com.cross_ni.cross.cdc.model.source.CustomAttribute;
 import com.cross_ni.cross.cdc.model.source.ExternalId;
 import com.cross_ni.cross.cdc.model.source.Node;
@@ -13,10 +14,12 @@ import java.util.Set;
 @ToString
 public class NodeSnapshot {
 
+    @Getter
     private final Node node;
     private Set<String> discriminators;
     private Set<ExternalId> externalIds = new HashSet<>();
     private Set<CustomAttribute> customAttributes;
+    private Attribute changedAttribute;
 
     @Getter
     private String operation;

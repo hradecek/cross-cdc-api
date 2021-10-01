@@ -1,7 +1,6 @@
 package com.cross_ni.cross.cdc.model.aggregate;
 
 import com.cross_ni.cross.cdc.model.source.CustomAttribute;
-import com.cross_ni.cross.cdc.model.source.NodeNodeType;
 
 import lombok.Getter;
 
@@ -21,6 +20,7 @@ public class CustomAttributes {
         if (sourceCustomAttribute.getOp().equals("d")) {
             customAttributes.remove(sourceCustomAttribute);
         } else {
+            customAttributes.remove(sourceCustomAttribute);
             customAttributes.add(sourceCustomAttribute);
         }
         if (sourceCustomAttribute.getOp().equals("r")) {

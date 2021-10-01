@@ -1,7 +1,5 @@
 package com.cross_ni.cross.cdc.model.source;
 
-import com.cross_ni.cross.cdc.serialization.GeneratedSerde;
-
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +8,6 @@ import lombok.ToString;
 @Getter
 @ToString
 @RequiredArgsConstructor
-@GeneratedSerde
 public class CaDefinition {
 
     private final String attributeName;
