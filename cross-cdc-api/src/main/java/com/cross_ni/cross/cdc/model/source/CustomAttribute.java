@@ -11,13 +11,7 @@ import java.util.Objects;
 @Getter
 @ToString
 @RequiredArgsConstructor
-public class CustomAttribute {
-
-    @SerializedName("__op")
-    private String op;
-
-    @SerializedName("__source_ts_ms")
-    private Double sourceTsMs;
+public class CustomAttribute extends CdcDebeziumModel {
 
     @SerializedName("ca_def_id")
     private String caDefId;

@@ -17,7 +17,7 @@
     <version.java>8</version.java>
     <maven.compiler.source>${version.java}</maven.compiler.source>
     <maven.compiler.target>${version.java}</maven.compiler.target>
-    <main.class>com.cross_ni.cross.cdc.Bootstrap</main.class>
+    <main.class>com.cross_ni.cross.cdc.Main</main.class>
     <schema-registry-url>http://localhost:8081</schema-registry-url>
     <!-- Maven plugins versions -->
     <version.maven.shade.plugin>3.2.4</version.maven.shade.plugin>
@@ -68,26 +68,26 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-shade-plugin</artifactId>-->
-<!--        <version>${version.maven.shade.plugin}</version>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <phase>package</phase>-->
-<!--            <goals>-->
-<!--              <goal>shade</goal>-->
-<!--            </goals>-->
-<!--            <configuration>-->
-<!--              <transformers>-->
-<!--                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
-<!--                  <mainClass>${main.class}</mainClass>-->
-<!--                </transformer>-->
-<!--              </transformers>-->
-<!--            </configuration>-->
-<!--          </execution>-->
-<!--        </executions>-->
-<!--      </plugin>-->
+      <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-shade-plugin</artifactId>
+       <version>${version.maven.shade.plugin}</version>
+       <executions>
+         <execution>
+           <phase>package</phase>
+           <goals>
+             <goal>shade</goal>
+           </goals>
+           <configuration>
+             <transformers>
+               <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                 <mainClass>${main.class}</mainClass>
+               </transformer>
+             </transformers>
+           </configuration>
+         </execution>
+       </executions>
+     </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -121,18 +121,6 @@
             <configuration>
               <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/sink</sourceDirectory>
               <targetPackage>com.cross_ni.cross.cdc.model.sink</targetPackage>
-              <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <id>generate-source-pojos</id>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <configuration>
-              <annotationStyle>gson</annotationStyle>
-              <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/source</sourceDirectory>
-              <targetPackage>com.cross_ni.cross.cdc.model.source</targetPackage>
               <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
             </configuration>
           </execution>

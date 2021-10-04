@@ -6,13 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/CustomAttributeJson.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/ExternalId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeNodeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/source/NodeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/CustomAttributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/CustomAttributes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeSnapshot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeSnapshot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/Attribute.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CustomAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CustomAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/NodeSinkValueMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/json/JsonSerdes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source/NodeType.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/AttributeType.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink/Node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definition.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-ca-definition.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-external-id.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-external-id.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-node.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +42,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -55,7 +73,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -63,22 +81,27 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/sink" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/cross_ni/cross/cdc/model/source" />
       <recent name="$PROJECT_DIR$/src/main/avro" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.cross_ni.cross.cdc.model" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.cross_ni.cross.cdc.model.aggregate" />
+      <recent name="com.cross_ni.cross.cdc.model.source" />
       <recent name="com.cross_ni.cross.cdc.topology" />
+      <recent name="com.cross_ni.cross.cdc.model.aggregate" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Bootstrap">
-    <configuration name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.cross_ni.cross.cdc.Bootstrap" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="JsonSerdes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cross_ni.cross.cdc.serialization.json.JsonSerdes" />
       <module name="cdc-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cross_ni.cross.cdc.*" />
+          <option name="PATTERN" value="com.cross_ni.cross.cdc.serialization.json.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,12 +109,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JsonSerdes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.cross_ni.cross.cdc.serialization.json.JsonSerdes" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cross_ni.cross.cdc.Main" />
       <module name="cdc-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cross_ni.cross.cdc.serialization.json.*" />
+          <option name="PATTERN" value="com.cross_ni.cross.cdc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,7 +138,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Bootstrap" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.JsonSerdes" />
       </list>
     </recent_temporary>
@@ -152,6 +175,11 @@
       <workItem from="1633066472660" duration="7949000" />
       <workItem from="1633075996529" duration="510000" />
       <workItem from="1633076825408" duration="146000" />
+      <workItem from="1633267565267" duration="377000" />
+      <workItem from="1633268132404" duration="1057000" />
+      <workItem from="1633269306025" duration="12654000" />
+      <workItem from="1633328274865" duration="225000" />
+      <workItem from="1633328526782" duration="58000" />
     </task>
     <servers />
   </component>
@@ -199,6 +227,10 @@
           <line>489</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>

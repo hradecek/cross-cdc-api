@@ -13,10 +13,16 @@ public class CustomAttributes {
     private final Set<CustomAttribute> customAttributes = new HashSet<>();
 
     private String operation;
-    private String nodeId;
+    private String caSetIt;
     private double sourceTsMs = 0.0;
+    private String nodeId;
 
-    public CustomAttributes aggregate(String nodeId, CustomAttribute sourceCustomAttribute) {
+    public CustomAttributes nodeId(String nodeId) {
+        this.nodeId = nodeId;
+        return this;
+    }
+
+    public CustomAttributes aggregate(String caSetId, CustomAttribute sourceCustomAttribute) {
         if (sourceCustomAttribute.getOp().equals("d")) {
             customAttributes.remove(sourceCustomAttribute);
         } else {
@@ -30,10 +36,11 @@ public class CustomAttributes {
         }
         sourceTsMs = Math.max(sourceTsMs, sourceCustomAttribute.getSourceTsMs());
 
-        this.nodeId = nodeId;
+        this.caSetIt = caSetId;
 
         return this;
     }
+
 
     public static CustomAttributes aggregator(String nodeId, CustomAttribute sourceCustomAttribute, CustomAttributes aggregatedCustomAttributes) {
         return aggregatedCustomAttributes.aggregate(nodeId, sourceCustomAttribute);

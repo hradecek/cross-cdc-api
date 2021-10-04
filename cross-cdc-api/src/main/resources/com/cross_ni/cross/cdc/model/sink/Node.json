@@ -30,6 +30,12 @@
       "type": "array",
       "items": "string"
     },
+    "customAttributes": {
+      "type": "array",
+      "items": {
+        "$ref": "CustomAttribute.json"
+      }
+    },
     "externalIds": {
       "type": "array",
       "items": {

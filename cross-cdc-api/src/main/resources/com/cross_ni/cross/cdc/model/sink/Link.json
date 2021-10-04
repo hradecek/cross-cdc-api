@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "linkEnds": {
+      "$ref": "LinkEnd.json"
+    },
+    "linkType": {
+      "type": "string"
+    },
+    "customAttributes": {
+      "type": "array",
+      "items": {
+        "$ref": "CustomAttribute.json"
+      }
+    },
+    "externalIds": {
+      "type": "array",
+      "items": {
+        "$ref": "ExternalId.json"
+      }
+    }
+  }
+}
