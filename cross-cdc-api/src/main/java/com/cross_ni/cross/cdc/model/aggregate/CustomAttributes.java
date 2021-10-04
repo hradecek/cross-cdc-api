@@ -13,12 +13,12 @@ public class CustomAttributes {
     private final Set<CustomAttribute> customAttributes = new HashSet<>();
 
     private String operation;
-    private String caSetIt;
+    private String caSetId;
     private double sourceTsMs = 0.0;
-    private String nodeId;
+    private String entityId;
 
-    public CustomAttributes nodeId(String nodeId) {
-        this.nodeId = nodeId;
+    public CustomAttributes entityId(String entityId) {
+        this.entityId = entityId;
         return this;
     }
 
@@ -36,7 +36,7 @@ public class CustomAttributes {
         }
         sourceTsMs = Math.max(sourceTsMs, sourceCustomAttribute.getSourceTsMs());
 
-        this.caSetIt = caSetId;
+        this.caSetId = caSetId;
 
         return this;
     }

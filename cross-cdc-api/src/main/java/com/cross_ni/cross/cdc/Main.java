@@ -18,6 +18,6 @@ public class Main {
      */
     public static void main(String[] args) {
         // Run IT!
-        new KafkaStreamsRunner().start(CdcTopology.create());
+        new KafkaStreamsRunner().start(new CdcTopology().create());
     }
 }

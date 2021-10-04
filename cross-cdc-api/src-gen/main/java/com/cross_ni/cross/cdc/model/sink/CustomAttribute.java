@@ -2,39 +2,31 @@
 package com.cross_ni.cross.cdc.model.sink;
 
 import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "value",
-    "definition"
-})
 @Generated("jsonschema2pojo")
 public class CustomAttribute {
 
-    @JsonProperty("value")
+    @SerializedName("value")
+    @Expose
     private Object value;
-    @JsonProperty("definition")
+    @SerializedName("definition")
+    @Expose
     private CustomAttributeDefinition definition;
 
-    @JsonProperty("value")
     public Object getValue() {
         return value;
     }
 
-    @JsonProperty("value")
     public void setValue(Object value) {
         this.value = value;
     }
 
-    @JsonProperty("definition")
     public CustomAttributeDefinition getDefinition() {
         return definition;
     }
 
-    @JsonProperty("definition")
     public void setDefinition(CustomAttributeDefinition definition) {
         this.definition = definition;
     }

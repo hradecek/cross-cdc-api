@@ -12,7 +12,7 @@ public class CaDefinition {
 
     private final String attributeName;
 
-    // DB column is mapped to "class", which is JAVA keyword and must be remapped via annotation
+    // DB column is mapped to "class", which is a JAVA keyword and must be remapped
     @SerializedName(value = "class")
     private final String attributeClass;
 }

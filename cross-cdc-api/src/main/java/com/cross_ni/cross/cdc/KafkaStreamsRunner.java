@@ -4,6 +4,7 @@ import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.errors.StreamsUncaughtExceptionHandler;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,17 +22,19 @@ public class KafkaStreamsRunner {
     private static final String BOOTSTRAP_SERVER = "localhost:9092";
     private static final String STATE_DIR_CONFIG = "/tmp/" + APPLICATION_ID;
 
+    private KafkaStreams kafkaStreams;
+
     /**
      * Start kafka streams application for specified {@code topology}.
      *
-     * @param topology topology to be used
+     * @param topology topology to be used for kafka streams
      */
     public void start(final Topology topology) {
-        final KafkaStreams streams = new KafkaStreams(topology, properties());
-        streams.setUncaughtExceptionHandler(KafkaStreamsRunner::uncaughtExceptionHandler);
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> shutdownHook(streams)));
+        kafkaStreams= new KafkaStreams(topology, properties());
+        kafkaStreams.setUncaughtExceptionHandler(this::uncaughtExceptionHandler);
+        Runtime.getRuntime().addShutdownHook(new Thread(this::shutdownHook));
 
-        streams.start();
+        kafkaStreams.start();
     }
 
     private static Properties properties() {
@@ -44,14 +47,14 @@ public class KafkaStreamsRunner {
         return properties;
     }
 
-    private static StreamsUncaughtExceptionHandler.StreamThreadExceptionResponse uncaughtExceptionHandler(final Throwable throwable) {
+    protected StreamsUncaughtExceptionHandler.StreamThreadExceptionResponse uncaughtExceptionHandler(final Throwable throwable) {
         throwable.printStackTrace();
         return StreamsUncaughtExceptionHandler.StreamThreadExceptionResponse.SHUTDOWN_APPLICATION;
     }
 
-    private static void shutdownHook(final KafkaStreams streams) {
+    protected void shutdownHook() {
         try {
-            streams.close();
+            kafkaStreams.close();
             LOGGER.info("{} stopped", APPLICATION_ID);
         } catch (Exception ex) {
             ex.printStackTrace();

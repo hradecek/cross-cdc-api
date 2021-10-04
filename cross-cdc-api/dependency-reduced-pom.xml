@@ -67,6 +67,7 @@
               <sourceDirectory>${project.basedir}/src/main/resources/com/cross_ni/cross/cdc/model/sink</sourceDirectory>
               <targetPackage>com.cross_ni.cross.cdc.model.sink</targetPackage>
               <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
+              <annotationStyle>gson</annotationStyle>
             </configuration>
           </execution>
         </executions>
@@ -83,7 +84,7 @@
   </dependencies>
   <properties>
     <version.slf4j.simple>1.7.32</version.slf4j.simple>
-    <version.kafka.streams>2.8.0</version.kafka.streams>
+    <version.kafka.streams>3.0.0</version.kafka.streams>
     <version.gson>2.8.8</version.gson>
     <maven.compiler.target>${version.java}</maven.compiler.target>
     <version.maven.shade.plugin>3.2.4</version.maven.shade.plugin>

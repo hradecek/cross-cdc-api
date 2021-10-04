@@ -2,52 +2,42 @@
 package com.cross_ni.cross.cdc.model.sink;
 
 import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "operation",
-    "external_id",
-    "system_id"
-})
 @Generated("jsonschema2pojo")
 public class ExternalId {
 
-    @JsonProperty("operation")
+    @SerializedName("operation")
+    @Expose
     private String operation;
-    @JsonProperty("external_id")
+    @SerializedName("external_id")
+    @Expose
     private String externalId;
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
+    @Expose
     private String systemId;
 
-    @JsonProperty("operation")
     public String getOperation() {
         return operation;
     }
 
-    @JsonProperty("operation")
     public void setOperation(String operation) {
         this.operation = operation;
     }
 
-    @JsonProperty("external_id")
     public String getExternalId() {
         return externalId;
     }
 
-    @JsonProperty("external_id")
     public void setExternalId(String externalId) {
         this.externalId = externalId;
     }
 
-    @JsonProperty("system_id")
     public String getSystemId() {
         return systemId;
     }
 
-    @JsonProperty("system_id")
     public void setSystemId(String systemId) {
         this.systemId = systemId;
     }

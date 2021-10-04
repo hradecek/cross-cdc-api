@@ -4,65 +4,53 @@ package com.cross_ni.cross.cdc.model.sink;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "linkEnds",
-    "linkType",
-    "customAttributes",
-    "externalIds"
-})
 @Generated("jsonschema2pojo")
 public class Link {
 
-    @JsonProperty("linkEnds")
+    @SerializedName("linkEnds")
+    @Expose
     private List<Double> linkEnds = new ArrayList<Double>();
-    @JsonProperty("linkType")
+    @SerializedName("linkType")
+    @Expose
     private String linkType;
-    @JsonProperty("customAttributes")
+    @SerializedName("customAttributes")
+    @Expose
     private List<CustomAttribute> customAttributes = new ArrayList<CustomAttribute>();
-    @JsonProperty("externalIds")
+    @SerializedName("externalIds")
+    @Expose
     private List<ExternalId> externalIds = new ArrayList<ExternalId>();
 
-    @JsonProperty("linkEnds")
     public List<Double> getLinkEnds() {
         return linkEnds;
     }
 
-    @JsonProperty("linkEnds")
     public void setLinkEnds(List<Double> linkEnds) {
         this.linkEnds = linkEnds;
     }
 
-    @JsonProperty("linkType")
     public String getLinkType() {
         return linkType;
     }
 
-    @JsonProperty("linkType")
     public void setLinkType(String linkType) {
         this.linkType = linkType;
     }
 
-    @JsonProperty("customAttributes")
     public List<CustomAttribute> getCustomAttributes() {
         return customAttributes;
     }
 
-    @JsonProperty("customAttributes")
     public void setCustomAttributes(List<CustomAttribute> customAttributes) {
         this.customAttributes = customAttributes;
     }
 
-    @JsonProperty("externalIds")
     public List<ExternalId> getExternalIds() {
         return externalIds;
     }
 
-    @JsonProperty("externalIds")
     public void setExternalIds(List<ExternalId> externalIds) {
         this.externalIds = externalIds;
     }

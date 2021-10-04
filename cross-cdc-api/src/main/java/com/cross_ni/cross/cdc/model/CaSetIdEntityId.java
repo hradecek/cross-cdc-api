@@ -10,5 +10,5 @@ import lombok.Setter;
 public class CaSetIdEntityId {
 
     private String caSetId;
-    private String nodeId;
+    private String entityId;
 }

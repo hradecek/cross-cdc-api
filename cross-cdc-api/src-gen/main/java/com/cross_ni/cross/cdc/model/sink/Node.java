@@ -4,169 +4,141 @@ package com.cross_ni.cross.cdc.model.sink;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "operation",
-    "node_id",
-    "capacity_full",
-    "capacity_free",
-    "description",
-    "inherit_geometry",
-    "name",
-    "status",
-    "aliases",
-    "customAttributes",
-    "externalIds",
-    "nodeTypes"
-})
 @Generated("jsonschema2pojo")
 public class Node {
 
-    @JsonProperty("operation")
+    @SerializedName("operation")
+    @Expose
     private String operation;
-    @JsonProperty("node_id")
+    @SerializedName("node_id")
+    @Expose
     private String nodeId;
-    @JsonProperty("capacity_full")
+    @SerializedName("capacity_full")
+    @Expose
     private Double capacityFull;
-    @JsonProperty("capacity_free")
+    @SerializedName("capacity_free")
+    @Expose
     private Double capacityFree;
-    @JsonProperty("description")
+    @SerializedName("description")
+    @Expose
     private String description;
-    @JsonProperty("inherit_geometry")
+    @SerializedName("inherit_geometry")
+    @Expose
     private Boolean inheritGeometry;
-    @JsonProperty("name")
+    @SerializedName("name")
+    @Expose
     private String name;
-    @JsonProperty("status")
+    @SerializedName("status")
+    @Expose
     private String status;
-    @JsonProperty("aliases")
+    @SerializedName("aliases")
+    @Expose
     private List<Object> aliases = new ArrayList<Object>();
-    @JsonProperty("customAttributes")
+    @SerializedName("customAttributes")
+    @Expose
     private List<CustomAttribute> customAttributes = new ArrayList<CustomAttribute>();
-    @JsonProperty("externalIds")
+    @SerializedName("externalIds")
+    @Expose
     private List<ExternalId> externalIds = new ArrayList<ExternalId>();
-    @JsonProperty("nodeTypes")
+    @SerializedName("nodeTypes")
+    @Expose
     private List<String> nodeTypes = new ArrayList<String>();
 
-    @JsonProperty("operation")
     public String getOperation() {
         return operation;
     }
 
-    @JsonProperty("operation")
     public void setOperation(String operation) {
         this.operation = operation;
     }
 
-    @JsonProperty("node_id")
     public String getNodeId() {
         return nodeId;
     }
 
-    @JsonProperty("node_id")
     public void setNodeId(String nodeId) {
         this.nodeId = nodeId;
     }
 
-    @JsonProperty("capacity_full")
     public Double getCapacityFull() {
         return capacityFull;
     }
 
-    @JsonProperty("capacity_full")
     public void setCapacityFull(Double capacityFull) {
         this.capacityFull = capacityFull;
     }
 
-    @JsonProperty("capacity_free")
     public Double getCapacityFree() {
         return capacityFree;
     }
 
-    @JsonProperty("capacity_free")
     public void setCapacityFree(Double capacityFree) {
         this.capacityFree = capacityFree;
     }
 
-    @JsonProperty("description")
     public String getDescription() {
         return description;
     }
 
-    @JsonProperty("description")
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @JsonProperty("inherit_geometry")
     public Boolean getInheritGeometry() {
         return inheritGeometry;
     }
 
-    @JsonProperty("inherit_geometry")
     public void setInheritGeometry(Boolean inheritGeometry) {
         this.inheritGeometry = inheritGeometry;
     }
 
-    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    @JsonProperty("status")
     public String getStatus() {
         return status;
     }
 
-    @JsonProperty("status")
     public void setStatus(String status) {
         this.status = status;
     }
 
-    @JsonProperty("aliases")
     public List<Object> getAliases() {
         return aliases;
     }
 
-    @JsonProperty("aliases")
     public void setAliases(List<Object> aliases) {
         this.aliases = aliases;
     }
 
-    @JsonProperty("customAttributes")
     public List<CustomAttribute> getCustomAttributes() {
         return customAttributes;
     }
 
-    @JsonProperty("customAttributes")
     public void setCustomAttributes(List<CustomAttribute> customAttributes) {
         this.customAttributes = customAttributes;
     }
 
-    @JsonProperty("externalIds")
     public List<ExternalId> getExternalIds() {
         return externalIds;
     }
 
-    @JsonProperty("externalIds")
     public void setExternalIds(List<ExternalId> externalIds) {
         this.externalIds = externalIds;
     }
 
-    @JsonProperty("nodeTypes")
     public List<String> getNodeTypes() {
         return nodeTypes;
     }
 
-    @JsonProperty("nodeTypes")
     public void setNodeTypes(List<String> nodeTypes) {
         this.nodeTypes = nodeTypes;
     }
