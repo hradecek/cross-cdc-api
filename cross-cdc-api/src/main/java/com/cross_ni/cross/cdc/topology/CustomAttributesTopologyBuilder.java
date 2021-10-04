@@ -18,6 +18,7 @@ import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Produced;
 import org.apache.kafka.streams.kstream.Repartitioned;
 
+import static com.cross_ni.cross.cdc.topology.LinkTopologyBuilder.TOPIC_NAME_SINK_LINK;
 import static com.cross_ni.cross.cdc.topology.NodeTopologyBuilder.TOPIC_NAME_SINK_NODE;
 
 class CustomAttributesTopologyBuilder {
@@ -25,20 +26,21 @@ class CustomAttributesTopologyBuilder {
     private static final String TOPIC_NAME_SOURCE_CA_DEF = "crossdb.public.ca_def";
     private static final String TOPIC_NAME_SOURCE_CA_VAL = "crossdb.public.ca_val";
 
-    private static final String TOPIC_NAME_SOURCE_LINK = "crossdb.public.link";
-
     private final StreamsBuilder builder;
-    private KTable<String, CaSetIdEntityId> nodeMap;
 
-    public CustomAttributesTopologyBuilder(StreamsBuilder builder, KTable<String, CaSetIdEntityId> nodeMap) {
+    private KTable<String, CaSetIdEntityId> nodeMap;
+    private KTable<String, CaSetIdEntityId> linkMap;
+
+    public CustomAttributesTopologyBuilder(StreamsBuilder builder, KTable<String, CaSetIdEntityId> nodeMap, KTable<String, CaSetIdEntityId> linkMap) {
         this.builder = builder;
         this.nodeMap = nodeMap;
+        this.linkMap = linkMap;
     }
 
     public void build() {
         final KStream<String, CustomAttribute> caValues = caValues();
-
-        repartitionByNodeId(aggregate(joinCaDefinitions(caValues)), nodeMap).to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(CustomAttributes.class)));
+        KTable<String, CustomAttributes> customAttributes = aggregate(joinCaDefinitions(caValues));
+        repartitionByEntityId(customAttributes, nodeMap).to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(CustomAttributes.class)));
     }
 
     private KStream<String, CustomAttribute> caValues() {
@@ -59,18 +61,11 @@ class CustomAttributesTopologyBuilder {
             .aggregate(CustomAttributes::new, CustomAttributes::aggregator, Materialized.with(Serdes.String(), JsonSerdes.serde(CustomAttributes.class)));
     }
 
-    private KStream<String, CustomAttributes> repartitionByNodeId(KTable<String, CustomAttributes> caValues, KTable<String, CaSetIdEntityId> caSetIdEntityIdMap ) {
-
-        return caValues.join(caSetIdEntityIdMap, (customAttributes, node) -> customAttributes.entityId(node.getEntityId()), Materialized.with(Serdes.String(), JsonSerdes.serde(CustomAttributes.class)))
+    private KStream<String, CustomAttributes> repartitionByEntityId(KTable<String, CustomAttributes> caValues, KTable<String, CaSetIdEntityId> caSetIdEntityIdMap) {
+        return caValues
+            .join(caSetIdEntityIdMap, (customAttributes, node) -> customAttributes.entityId(node.getEntityId()), Materialized.with(Serdes.String(), JsonSerdes.serde(CustomAttributes.class)))
             .toStream()
             .selectKey((caSetId, custom) -> custom.getEntityId())
             .repartition(Repartitioned.with(Serdes.String(), JsonSerdes.serde(CustomAttributes.class)));
     }
-
-//    private KTable<String, CaSetIdEntityId> caSetIdEntityIdMap() {
-//        return builder.stream(TOPIC_NAME_SOURCE_NODE, Consumed.with(Serdes.String(), JsonSerdes.serde(Node.class)))
-//            .filterNot((id, entity) -> entity.getOp().equals("u"))
-//            .map((entityId, entity) -> KeyValue.pair(entity.getCaSetId(), new CaSetIdEntityId(entity.getCaSetId(), entityId)))
-//            .toTable(Materialized.with(Serdes.String(), JsonSerdes.serde(CaSetIdEntityId.class)));
-//    }
 }

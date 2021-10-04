@@ -5,31 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/CustomAttribute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/CustomAttributeDefinition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/ExternalId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Link.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-gen/main/java/com/cross_ni/cross/cdc/model/sink/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/KafkaStreamsRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/KafkaStreamsRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/CaSetIdEntityId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/CaSetIdEntityId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/CustomAttributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/CustomAttributes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/SerdeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/serialization/SerdeType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CustomAttributesTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CustomAttributesTopologyBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/LinkTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/LinkTopologyBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definition.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-ca-definition.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-external-id.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-external-id.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-link.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-link.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,6 +161,7 @@
       <workItem from="1633269306025" duration="12654000" />
       <workItem from="1633328274865" duration="225000" />
       <workItem from="1633328526782" duration="58000" />
+      <workItem from="1633354508229" duration="2526000" />
     </task>
     <servers />
   </component>
