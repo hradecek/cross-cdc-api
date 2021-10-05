@@ -44,11 +44,11 @@ class CustomAttributesTopologyBuilder {
     }
 
     private KStream<String, CustomAttribute> caValues() {
-        return builder.stream(TOPIC_NAME_SOURCE_CA_VAL, Consumed.with(Serdes.String(), JsonSerdes.serde(CustomAttribute.class)));
+        return builder.stream(TOPIC_NAME_SOURCE_CA_VAL, JsonConsumed.of("cu", CustomAttribute.class));
     }
 
     private GlobalKTable<String, CaDefinition> caDefinitions() {
-        return builder.globalTable(TOPIC_NAME_SOURCE_CA_DEF, Consumed.with(Serdes.String(), JsonSerdes.serde(CaDefinition.class)));
+        return builder.globalTable(TOPIC_NAME_SOURCE_CA_DEF, JsonConsumed.of("cuu", CaDefinition.class));
     }
 
     private KStream<String, CustomAttribute> joinCaDefinitions(KStream<String, CustomAttribute> caValues) {

@@ -10,20 +10,18 @@ public class SinkNodeDifferenceMapper {
         boolean updated = false;
         final com.cross_ni.cross.cdc.model.sink.Node sinkNode = createSinkNode();
         if (isDifferent(Node::getNodeName, currentNode, newNode)) {
-            sinkNode.setName(currentNode.getNodeName());
+            sinkNode.setName(newNode.getNodeName());
             updated = true;
         }
         if (isDifferent(Node::getNodeStatusId, currentNode, newNode)) {
-            sinkNode.setStatus(currentNode.getNodeStatusId());
+            sinkNode.setStatus(newNode.getNodeStatusId());
             updated = true;
         }
 
         if (updated) {
             sinkNode.setOperation("u");
-            return sinkNode;
-        } else {
-            return null;
         }
+        return sinkNode;
     }
 
     private static <T> boolean isDifferent(Function<Node, T> propertyGetter, Node currentNode, Node newNode) {

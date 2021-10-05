@@ -15,22 +15,16 @@ import org.apache.kafka.streams.kstream.Produced;
 import static com.cross_ni.cross.cdc.topology.LinkTopologyBuilder.TOPIC_NAME_SINK_LINK;
 import static com.cross_ni.cross.cdc.topology.NodeTopologyBuilder.TOPIC_NAME_SINK_NODE;
 
-public class ExternalIdTopology implements CdcTopologyBuilder {
+public class ExternalIdTopologyBuilder implements CdcTopologyBuilder {
 
     private static final String TOPIC_NAME_SOURCE_EXTERNAL_ID = "crossdb.public.external_id";
 
-    // TODO: Must be tested - if package changes -> fail
+    // TODO: Must be tested? - if package changes -> fail, should be part of some schema tests
     private static final String EXTERNAL_ID_LINK_ENTITY = "com.cross_ni.cross.db.pojo.core.Link";
     private static final String EXTERNAL_ID_NODE_ENTITY = "com.cross_ni.cross.db.pojo.core.Node";
 
-    private final StreamsBuilder builder;
-
-    public ExternalIdTopology(StreamsBuilder builder) {
-        this.builder = builder;
-    }
-
     @Override
-    public void build() {
+    public void build(final StreamsBuilder builder) {
         final ExternalIdsCreator externalIdsCreator = new ExternalIdsCreator(builder, TOPIC_NAME_SOURCE_EXTERNAL_ID);
         externalIdsCreator.createKTable(EXTERNAL_ID_NODE_ENTITY).toStream().to(TOPIC_NAME_SINK_NODE, Produced.with(Serdes.String(), JsonSerdes.serde(ExternalIds.class)));
         externalIdsCreator.createKTable(EXTERNAL_ID_LINK_ENTITY).toStream().to(TOPIC_NAME_SINK_LINK, Produced.with(Serdes.String(), JsonSerdes.serde(ExternalIds.class)));

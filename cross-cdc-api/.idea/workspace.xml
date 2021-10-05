@@ -6,11 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/KafkaStreamsRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/KafkaStreamsRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/SinkNodeDifferenceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/SinkNodeDifferenceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopologyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CustomAttributesTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CustomAttributesTopologyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/ExternalIdTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/ExternalIdTopologyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/LinkTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/LinkTopologyBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definition.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-ca-definition.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-set.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-ca-set.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-set.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-external-id.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-external-id.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../postgres/source-link.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-link.json" afterDir="false" />
@@ -225,8 +230,10 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="node.getNodeTypes()" language="JAVA" />
-        <watch expression="nodesSplit.get(Branched.as(&quot;SNAPSHOTS&quot;))" language="JAVA" />
+        <watch expression="currentNode" language="JAVA" />
+        <watch expression="newNode" language="JAVA" />
+        <watch expression="propertyGetter.apply(currentNode).equals(propertyGetter.apply(newNode))" language="JAVA" />
+        <watch expression="node.getOperation() == null" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

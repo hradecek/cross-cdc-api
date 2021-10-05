@@ -1,6 +1,8 @@
 package com.cross_ni.cross.cdc.topology;
 
+import org.apache.kafka.streams.StreamsBuilder;
+
 interface CdcTopologyBuilder {
 
-    void build();
+    void build(final StreamsBuilder builder);
 }
