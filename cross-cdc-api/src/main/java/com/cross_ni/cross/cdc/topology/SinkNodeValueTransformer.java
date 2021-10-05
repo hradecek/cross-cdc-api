@@ -3,15 +3,16 @@ package com.cross_ni.cross.cdc.topology;
 import com.cross_ni.cross.cdc.model.mapper.SinkNodeDifferenceMapper;
 import com.cross_ni.cross.cdc.model.mapper.SinkNodeMapper;
 import com.cross_ni.cross.cdc.model.source.Node;
+
 import org.apache.kafka.streams.kstream.ValueTransformerWithKey;
 import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.KeyValueStore;
 
 import java.util.Optional;
 
-class SinkNodeValueTransformer implements ValueTransformerWithKey<String, Node, com.cross_ni.cross.cdc.model.sink.Node> {
+import static com.cross_ni.cross.cdc.topology.NodeTopologyBuilder.STORE_NAME_SOURCE_NODES;
 
-    private static final String STORE_NAME_SOURCE_NODE = "source-nodes-state-store";
+class SinkNodeValueTransformer implements ValueTransformerWithKey<String, Node, com.cross_ni.cross.cdc.model.sink.Node> {
 
     private SinkNodeMapper mapper;
     private SinkNodeDifferenceMapper differenceMapper;
@@ -22,7 +23,7 @@ class SinkNodeValueTransformer implements ValueTransformerWithKey<String, Node, 
     public void init(final ProcessorContext context) {
         differenceMapper = new SinkNodeDifferenceMapper();
         mapper = new SinkNodeMapper();
-        store = context.getStateStore(STORE_NAME_SOURCE_NODE);
+        store = context.getStateStore(STORE_NAME_SOURCE_NODES);
     }
 
     @Override

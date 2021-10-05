@@ -1,10 +1,10 @@
 package com.cross_ni.cross.cdc.serialization.json;
 
+import com.cross_ni.cross.cdc.model.CaSetIdEntityId;
 import com.cross_ni.cross.cdc.model.aggregate.CustomAttributes;
 import com.cross_ni.cross.cdc.model.aggregate.ExternalIds;
 import com.cross_ni.cross.cdc.model.aggregate.NodeTypes;
 import com.cross_ni.cross.cdc.model.source.CaDefinition;
-import com.cross_ni.cross.cdc.model.CaSetIdEntityId;
 import com.cross_ni.cross.cdc.model.source.CustomAttribute;
 import com.cross_ni.cross.cdc.model.source.ExternalId;
 import com.cross_ni.cross.cdc.model.source.Link;

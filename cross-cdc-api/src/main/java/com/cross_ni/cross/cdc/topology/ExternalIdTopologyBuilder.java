@@ -1,17 +1,18 @@
 package com.cross_ni.cross.cdc.topology;
 
 import com.cross_ni.cross.cdc.model.aggregate.ExternalIds;
+import com.cross_ni.cross.cdc.model.mapper.SinkLinkExternalIdsMapper;
+import com.cross_ni.cross.cdc.model.mapper.SinkNodeExternalIdsMapper;
 import com.cross_ni.cross.cdc.model.source.ExternalId;
-import com.cross_ni.cross.cdc.serialization.json.JsonSerdes;
 import com.cross_ni.cross.cdc.utils.JsonConsumed;
+import com.cross_ni.cross.cdc.utils.JsonMaterialized;
 import com.cross_ni.cross.cdc.utils.JsonProduced;
-import org.apache.kafka.common.serialization.Serdes;
+
 import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.kstream.Grouped;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
-import org.apache.kafka.streams.kstream.Materialized;
 
-import static com.cross_ni.cross.cdc.topology.CdcTopology.TOPIC_NAME_SINK_LINK;
 import static com.cross_ni.cross.cdc.topology.CdcTopology.TOPIC_NAME_SINK_NODE;
 
 class ExternalIdTopologyBuilder implements CdcTopologyBuilder {
@@ -25,12 +26,25 @@ class ExternalIdTopologyBuilder implements CdcTopologyBuilder {
     @Override
     public void build(final StreamsBuilder builder) {
         final ExternalIdsKTable externalIds = new ExternalIdsKTable(builder, TOPIC_NAME_SOURCE_EXTERNAL_ID);
-        sinkExternalIdsFor(externalIds, EXTERNAL_ID_LINK_ENTITY, TOPIC_NAME_SINK_LINK, "sink-link-external-ids");
-        sinkExternalIdsFor(externalIds, EXTERNAL_ID_NODE_ENTITY, TOPIC_NAME_SINK_NODE, "sink-node-external-ids");
+        sinkNodeExternalIdsFor(externalIds);
+        sinkLinkExternalIdsFor(externalIds);
     }
 
-    private static void sinkExternalIdsFor(ExternalIdsKTable externalIdsKtable, String entity, String sinkTopicName, String processorName) {
-        externalIdsKtable.createFor(entity).toStream().to(sinkTopicName, JsonProduced.of(processorName, ExternalIds.class));
+    // TODO: Duplication - e.g. create a specialized class "Sinker" with configuration?
+    private static void sinkNodeExternalIdsFor(ExternalIdsKTable externalIdsKtable) {
+        externalIdsKtable
+            .createFor(EXTERNAL_ID_NODE_ENTITY)
+            .toStream()
+            .mapValues(new SinkNodeExternalIdsMapper())
+            .to(TOPIC_NAME_SINK_NODE, JsonProduced.of("sink-node-external-ids", com.cross_ni.cross.cdc.model.sink.Node.class));
+    }
+
+    private static void sinkLinkExternalIdsFor(ExternalIdsKTable externalIdsKtable) {
+        externalIdsKtable
+            .createFor(EXTERNAL_ID_LINK_ENTITY)
+            .toStream()
+            .mapValues(new SinkLinkExternalIdsMapper())
+            .to(TOPIC_NAME_SINK_NODE, JsonProduced.of("sink-link-external-ids", com.cross_ni.cross.cdc.model.sink.Link.class));
     }
 
     private static class ExternalIdsKTable {
@@ -44,8 +58,8 @@ class ExternalIdTopologyBuilder implements CdcTopologyBuilder {
         KTable<String, ExternalIds> createFor(String entityDiscriminator) {
             return externalIds
                     .filter((k, v) -> v.getEntity().equals(entityDiscriminator))
-                    .groupByKey()
-                    .aggregate(ExternalIds::new, ExternalIds::aggregator, Materialized.with(Serdes.String(), JsonSerdes.serde(ExternalIds.class)));
+                    .groupByKey(Grouped.as("group-external-ids-by-entity-id"))
+                    .aggregate(ExternalIds::new, ExternalIds::aggregator, JsonMaterialized.of("aggregate-external-ids", ExternalIds.class));
         }
     }
 }

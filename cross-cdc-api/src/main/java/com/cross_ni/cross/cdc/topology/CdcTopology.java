@@ -15,10 +15,14 @@ public class CdcTopology {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CdcTopology.class);
 
-    public static final String TOPIC_NAME_SINK_LINK = "cross.cdc.link";
-    public static final String TOPIC_NAME_SINK_NODE = "cross.cdc.node";
+    public static final String TOPIC_NAME_SINK_LINK = createCdcTopicName("link");
+    public static final String TOPIC_NAME_SINK_NODE = createCdcTopicName("node");
 
     private final StreamsBuilder streamsBuilder = new StreamsBuilder();
+
+    private static String createCdcTopicName(String name) {
+        return "cross.cdc." + name;
+    }
 
     /**
      * Build whole CROSS CDC {@link Topology kafka streams topology}.

@@ -2,6 +2,7 @@ package com.cross_ni.cross.cdc.topology;
 
 import com.cross_ni.cross.cdc.model.source.Link;
 import com.cross_ni.cross.cdc.serialization.json.JsonSerdes;
+
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.Consumed;

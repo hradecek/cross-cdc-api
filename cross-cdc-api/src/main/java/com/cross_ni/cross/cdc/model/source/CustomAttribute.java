@@ -1,7 +1,6 @@
 package com.cross_ni.cross.cdc.model.source;
 
 import com.google.gson.annotations.SerializedName;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;

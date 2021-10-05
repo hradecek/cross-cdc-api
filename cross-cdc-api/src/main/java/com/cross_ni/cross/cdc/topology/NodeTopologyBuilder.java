@@ -2,14 +2,14 @@ package com.cross_ni.cross.cdc.topology;
 
 import com.cross_ni.cross.cdc.model.CaSetIdEntityId;
 import com.cross_ni.cross.cdc.model.aggregate.NodeTypes;
-import com.cross_ni.cross.cdc.model.mapper.SinkNodeTypeMapper;
+import com.cross_ni.cross.cdc.model.mapper.SinkNodeTypesMapper;
 import com.cross_ni.cross.cdc.model.source.Node;
 import com.cross_ni.cross.cdc.model.source.NodeNodeType;
 import com.cross_ni.cross.cdc.serialization.json.JsonSerdes;
 import com.cross_ni.cross.cdc.utils.JsonConsumed;
 import com.cross_ni.cross.cdc.utils.JsonMaterialized;
 import com.cross_ni.cross.cdc.utils.JsonProduced;
-import lombok.Getter;
+
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.KTable;
@@ -20,14 +20,16 @@ import org.apache.kafka.streams.state.KeyValueStore;
 import org.apache.kafka.streams.state.StoreBuilder;
 import org.apache.kafka.streams.state.Stores;
 
+import lombok.Getter;
+
 import static com.cross_ni.cross.cdc.topology.CdcTopology.TOPIC_NAME_SINK_NODE;
 
 class NodeTopologyBuilder implements CdcTopologyBuilder {
 
+    public static final String STORE_NAME_SOURCE_NODES = "source-nodes-store";
+
     private static final String TOPIC_NAME_SOURCE_NODE = "crossdb.public.node";
     private static final String TOPIC_NAME_SOURCE_NODE_NODE_TYPE = "crossdb.public.node_node_type";
-
-    private static final String STORE_NAME_SOURCE_NODES = "source-nodes-store";
 
     // TODO: Use state store instead
     @Getter
@@ -74,7 +76,7 @@ class NodeTopologyBuilder implements CdcTopologyBuilder {
     private void sinkNodeTypeChanges(final StreamsBuilder builder) {
         nodeNodeTypes(builder)
             .toStream(Named.as("stream-node-types"))
-            .mapValues(new SinkNodeTypeMapper(), Named.as("map-node-types-to-sink-node"))
+            .mapValues(new SinkNodeTypesMapper(), Named.as("map-node-types-to-sink-node"))
             .to(TOPIC_NAME_SINK_NODE, producedSinkNode("sink-node-types"));
     }
 

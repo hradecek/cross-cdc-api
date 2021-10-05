@@ -8,6 +8,7 @@ import lombok.ToString;
 @Getter
 public class ExternalId extends CdcDebeziumModel {
 
+    // TODO: isPrimary
     private String entity;
     private String externalId;
     private String systemId;

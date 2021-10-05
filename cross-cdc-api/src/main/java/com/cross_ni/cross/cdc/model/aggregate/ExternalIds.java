@@ -1,7 +1,6 @@
 package com.cross_ni.cross.cdc.model.aggregate;
 
 import com.cross_ni.cross.cdc.model.source.ExternalId;
-import com.cross_ni.cross.cdc.model.source.NodeNodeType;
 
 import lombok.Getter;
 
@@ -18,7 +17,7 @@ public class ExternalIds extends EntityAggregate<String, ExternalId, ExternalIds
     }
 
     @Override
-    public ExternalIds aggregate(String nodeId, ExternalId sourceExternalId) {
+    public ExternalIds aggregate(String entityId, ExternalId sourceExternalId) {
         if (sourceExternalId.getOp().equals("d")) {
             externalIds.remove(sourceExternalId);
         } else {
@@ -31,7 +30,7 @@ public class ExternalIds extends EntityAggregate<String, ExternalId, ExternalIds
         }
 
         sourceTsMs = Math.max(sourceTsMs, sourceExternalId.getSourceTsMs());
-        entityId = nodeId;
+        this.entityId = entityId;
 
         return this;
     }

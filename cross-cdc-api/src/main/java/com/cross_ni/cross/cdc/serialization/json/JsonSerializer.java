@@ -1,9 +1,10 @@
 package com.cross_ni.cross.cdc.serialization.json;
 
+import org.apache.kafka.common.serialization.Serializer;
+
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.apache.kafka.common.serialization.Serializer;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Map;

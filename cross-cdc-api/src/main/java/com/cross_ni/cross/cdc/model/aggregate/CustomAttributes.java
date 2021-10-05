@@ -1,6 +1,7 @@
 package com.cross_ni.cross.cdc.model.aggregate;
 
 import com.cross_ni.cross.cdc.model.source.CustomAttribute;
+
 import lombok.Getter;
 
 import java.util.HashSet;
