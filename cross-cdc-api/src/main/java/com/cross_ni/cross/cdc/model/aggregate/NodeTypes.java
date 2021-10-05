@@ -8,14 +8,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-public class NodeTypes {
+public class NodeTypes extends EntityAggregate<String, NodeNodeType, NodeTypes> {
 
     private final Set<String> discriminators = new HashSet<>();
 
-    private String operation;
-    private String nodeId;
-    private double sourceTsMs = 0.0;
+    public static NodeTypes aggregator(String key, NodeNodeType sourceNodeNodeType, NodeTypes aggregatedNodeTypes) {
+        return aggregatedNodeTypes.aggregate(key, sourceNodeNodeType);
+    }
 
+    @Override
     public NodeTypes aggregate(String nodeId, NodeNodeType sourceNodeNodeType) {
         if (sourceNodeNodeType.getOp().equals("d")) {
             discriminators.remove(sourceNodeNodeType.getDiscriminator());
@@ -27,14 +28,10 @@ public class NodeTypes {
         } else {
             operation = "u";
         }
-        sourceTsMs = Math.max(sourceTsMs, sourceNodeNodeType.getSourceTsMs());
 
-        this.nodeId = nodeId;
+        sourceTsMs = Math.max(sourceTsMs, sourceNodeNodeType.getSourceTsMs());
+        entityId = nodeId;
 
         return this;
-    }
-
-    public static NodeTypes aggregator(String key, NodeNodeType sourceNodeNodeType, NodeTypes aggregatedNodeTypes) {
-        return aggregatedNodeTypes.aggregate(key, sourceNodeNodeType);
     }
 }

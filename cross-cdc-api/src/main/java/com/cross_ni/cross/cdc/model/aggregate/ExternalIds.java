@@ -9,14 +9,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-public class ExternalIds {
+public class ExternalIds extends EntityAggregate<String, ExternalId, ExternalIds> {
 
     private final Set<ExternalId> externalIds = new HashSet<>();
 
-    private String operation;
-    private String nodeId;
-    private double sourceTsMs = 0.0;
+    public static ExternalIds aggregator(String key, ExternalId sourceExternalId, ExternalIds aggregatedExternalIds) {
+        return aggregatedExternalIds.aggregate(key, sourceExternalId);
+    }
 
+    @Override
     public ExternalIds aggregate(String nodeId, ExternalId sourceExternalId) {
         if (sourceExternalId.getOp().equals("d")) {
             externalIds.remove(sourceExternalId);
@@ -28,14 +29,10 @@ public class ExternalIds {
         } else {
             operation = "u";
         }
-        sourceTsMs = Math.max(sourceTsMs, sourceExternalId.getSourceTsMs());
 
-        this.nodeId = nodeId;
+        sourceTsMs = Math.max(sourceTsMs, sourceExternalId.getSourceTsMs());
+        entityId = nodeId;
 
         return this;
-    }
-
-    public static ExternalIds aggregator(String key, ExternalId sourceExternalId, ExternalIds aggregatedExternalIds) {
-        return aggregatedExternalIds.aggregate(key, sourceExternalId);
     }
 }

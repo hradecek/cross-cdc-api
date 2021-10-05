@@ -15,6 +15,9 @@ public class CdcTopology {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CdcTopology.class);
 
+    public static final String TOPIC_NAME_SINK_LINK = "cross.cdc.link";
+    public static final String TOPIC_NAME_SINK_NODE = "cross.cdc.node";
+
     private final StreamsBuilder streamsBuilder = new StreamsBuilder();
 
     /**
@@ -31,7 +34,7 @@ public class CdcTopology {
         final NodeTopologyBuilder nodeTopologyBuilder = new NodeTopologyBuilder();
         nodeTopologyBuilder.build(streamsBuilder);
 
-        new CustomAttributesTopologyBuilder(streamsBuilder, nodeTopologyBuilder.getCaSetMap(), linkTopologyBuilder.getCaSetMap()).build();
+        new CustomAttributesTopologyBuilder(streamsBuilder, nodeTopologyBuilder.getCaSetMap()).build();
 
         return buildAndLogTopology(streamsBuilder);
     }

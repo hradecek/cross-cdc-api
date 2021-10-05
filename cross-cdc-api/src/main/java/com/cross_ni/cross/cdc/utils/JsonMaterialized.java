@@ -1,7 +1,5 @@
-package com.cross_ni.cross.cdc.topology;
+package com.cross_ni.cross.cdc.utils;
 
-import com.cross_ni.cross.cdc.model.aggregate.CustomAttributes;
-import com.cross_ni.cross.cdc.model.aggregate.NodeTypes;
 import com.cross_ni.cross.cdc.serialization.json.JsonSerdes;
 
 import org.apache.kafka.common.serialization.Serdes;

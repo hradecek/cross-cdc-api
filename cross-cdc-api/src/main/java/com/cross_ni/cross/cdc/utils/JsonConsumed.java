@@ -1,4 +1,4 @@
-package com.cross_ni.cross.cdc.topology;
+package com.cross_ni.cross.cdc.utils;
 
 import com.cross_ni.cross.cdc.serialization.json.JsonSerdes;
 

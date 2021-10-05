@@ -6,21 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="783f3801-9cdb-4b4b-9e80-6e568f3989a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/SinkNodeDifferenceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/SinkNodeDifferenceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/SinkNodeDifferenceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/mapper/SinkNodeDifferenceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/SinkNodeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/mapper/SinkNodeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/CustomAttributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/CustomAttributes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/ExternalIds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/ExternalIds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/aggregate/NodeTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/model/source/CaDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopology.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CdcTopologyBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CustomAttributesTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/CustomAttributesTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/ExternalIdTopology.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/ExternalIdTopologyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/ExternalIdTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/ExternalIdTopologyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/JsonConsumed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/utils/JsonConsumed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/JsonMaterialized.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/utils/JsonMaterialized.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/JsonProduced.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/utils/JsonProduced.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/LinkTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/LinkTopologyBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cross_ni/cross/cdc/topology/NodeTopologyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-definition.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-ca-definition.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-ca-set.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-custom-attributes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-external-id.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-external-id.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-link.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-link.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node-node-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node-node-types.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../postgres/source-node.json" beforeDir="false" afterPath="$PROJECT_DIR$/../postgres/source-node.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +80,9 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.cross_ni.cross.cdc.model" />
     </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="com.cross_ni.cross.cdc.topology" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.cross_ni.cross.cdc" />
       <recent name="com.cross_ni.cross.cdc.model.source" />
@@ -107,7 +109,7 @@
       <module name="cdc-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cross_ni.cross.cdc.*" />
+          <option name="PATTERN" value="com.cross_ni.cross.cdc.model.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

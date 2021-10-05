@@ -4,23 +4,15 @@ import com.cross_ni.cross.cdc.model.CaSetIdEntityId;
 import com.cross_ni.cross.cdc.model.aggregate.CustomAttributes;
 import com.cross_ni.cross.cdc.model.source.CaDefinition;
 import com.cross_ni.cross.cdc.model.source.CustomAttribute;
-import com.cross_ni.cross.cdc.model.source.Node;
 import com.cross_ni.cross.cdc.serialization.json.JsonSerdes;
-
+import com.cross_ni.cross.cdc.utils.JsonConsumed;
 import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
-import org.apache.kafka.streams.kstream.Consumed;
-import org.apache.kafka.streams.kstream.GlobalKTable;
-import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.kstream.KTable;
-import org.apache.kafka.streams.kstream.Materialized;
-import org.apache.kafka.streams.kstream.Produced;
-import org.apache.kafka.streams.kstream.Repartitioned;
+import org.apache.kafka.streams.kstream.*;
 
-import static com.cross_ni.cross.cdc.topology.LinkTopologyBuilder.TOPIC_NAME_SINK_LINK;
-import static com.cross_ni.cross.cdc.topology.NodeTopologyBuilder.TOPIC_NAME_SINK_NODE;
+import static com.cross_ni.cross.cdc.topology.CdcTopology.TOPIC_NAME_SINK_NODE;
 
+// TODO: Must be re-worked
 class CustomAttributesTopologyBuilder {
 
     private static final String TOPIC_NAME_SOURCE_CA_DEF = "crossdb.public.ca_def";
@@ -29,12 +21,10 @@ class CustomAttributesTopologyBuilder {
     private final StreamsBuilder builder;
 
     private KTable<String, CaSetIdEntityId> nodeMap;
-    private KTable<String, CaSetIdEntityId> linkMap;
 
-    public CustomAttributesTopologyBuilder(StreamsBuilder builder, KTable<String, CaSetIdEntityId> nodeMap, KTable<String, CaSetIdEntityId> linkMap) {
+    public CustomAttributesTopologyBuilder(StreamsBuilder builder, KTable<String, CaSetIdEntityId> nodeMap) {
         this.builder = builder;
         this.nodeMap = nodeMap;
-        this.linkMap = linkMap;
     }
 
     public void build() {
