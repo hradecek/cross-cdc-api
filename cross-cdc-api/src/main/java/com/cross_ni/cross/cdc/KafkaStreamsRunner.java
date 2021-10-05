@@ -30,7 +30,7 @@ public class KafkaStreamsRunner {
      * @param topology topology to be used for kafka streams
      */
     public void start(final Topology topology) {
-        kafkaStreams= new KafkaStreams(topology, properties());
+        kafkaStreams = new KafkaStreams(topology, properties());
         kafkaStreams.setUncaughtExceptionHandler(this::uncaughtExceptionHandler);
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutdownHook));
 

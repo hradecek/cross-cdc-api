@@ -1,5 +1,6 @@
 package com.cross_ni.cross.cdc.topology;
 
+import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.Topology;
 
@@ -24,14 +25,14 @@ public class CdcTopology {
      */
     // This is the only entry point for com.cross_ni.cross.cdc.topology package
     public Topology create() {
-        new ExternalIdTopology(streamsBuilder).build();
-        final LinkTopologyBuilder linkTopologyBuilder = new LinkTopologyBuilder(streamsBuilder);
-        linkTopologyBuilder.build();
+//        new ExternalIdTopology(streamsBuilder).build();
+//        final LinkTopologyBuilder linkTopologyBuilder = new LinkTopologyBuilder(streamsBuilder);
+//        linkTopologyBuilder.build();
 
         final NodeTopologyBuilder nodeTopologyBuilder = new NodeTopologyBuilder(streamsBuilder);
         nodeTopologyBuilder.build();
 
-        new CustomAttributesTopologyBuilder(streamsBuilder, nodeTopologyBuilder.getCaSetMap(), linkTopologyBuilder.getCaSetMap()).build();
+//        new CustomAttributesTopologyBuilder(streamsBuilder, nodeTopologyBuilder.getCaSetMap(), linkTopologyBuilder.getCaSetMap()).build();
 
         return buildAndLogTopology(streamsBuilder);
     }
