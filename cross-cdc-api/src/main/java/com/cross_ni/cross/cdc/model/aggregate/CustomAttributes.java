@@ -21,14 +21,14 @@ public class CustomAttributes extends EntityAggregate<String, CustomAttribute, C
 
     @Override
     public CustomAttributes aggregate(String caSetId, CustomAttribute sourceCustomAttribute) {
-        if (sourceCustomAttribute.getOp().equals("d")) {
+        if (sourceCustomAttribute.isDelete()) {
             customAttributes.remove(sourceCustomAttribute);
         } else {
             customAttributes.remove(sourceCustomAttribute);
             customAttributes.add(sourceCustomAttribute);
         }
 
-        if (sourceCustomAttribute.getOp().equals("r")) {
+        if (sourceCustomAttribute.isSnapshot()) {
             operation = "r";
         } else {
             operation = "u";

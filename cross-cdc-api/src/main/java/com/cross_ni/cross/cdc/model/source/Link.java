@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class Link extends CdcDebeziumModel implements CdcEntityWithCaSetModel<String, String> {
+public class Link extends CdcDebeziumModel implements CdcEntityWithCaSetModel<String> {
 
     private String linkId;
     private Double capacityFull;
@@ -22,9 +22,4 @@ public class Link extends CdcDebeziumModel implements CdcEntityWithCaSetModel<St
     private Double mainFibrilCount;
     private Double protectFibrilCount;
     private String caSetId;
-
-    @Override
-    public String getPrimaryId() {
-        return linkId;
-    }
 }

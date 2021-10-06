@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @ToString
 @Getter
-public class Node extends CdcDebeziumModel implements CdcEntityWithCaSetModel<String, String> {
+public class Node extends CdcDebeziumModel implements CdcEntityWithCaSetModel<String> {
 
     private String nodeId;
     private String capacityFree;
@@ -18,9 +18,4 @@ public class Node extends CdcDebeziumModel implements CdcEntityWithCaSetModel<St
     private String materialId;
     private String nodeGeomId;
     private String nodeStatusId;
-
-    @Override
-    public String getPrimaryId() {
-        return nodeId;
-    }
 }

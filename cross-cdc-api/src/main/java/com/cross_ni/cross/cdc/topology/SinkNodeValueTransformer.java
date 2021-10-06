@@ -35,7 +35,7 @@ class SinkNodeValueTransformer implements ValueTransformerWithKey<String, Node, 
 
     private Optional<Node> updateStore(final String key, final Node value) {
         final Node nodeBeforeChange = store.get(key);
-        if (value.getOp().equals("d")) {
+        if (value.isDelete()) {
             store.delete(key);
         } else {
             store.put(key, value);
